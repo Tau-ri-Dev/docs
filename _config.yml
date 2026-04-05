@@ -90,7 +90,6 @@ callouts:
 
 plugins:
   - jekyll-seo-tag
-  - jekyll-github-metadata
   - jekyll-sitemap
 
 compress_html:
