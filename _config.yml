@@ -88,10 +88,6 @@ callouts:
     title: Warning
     color: red
 
-plugins:
-  - jekyll-seo-tag
-  - jekyll-sitemap
-
 compress_html:
   clippings: all
   comments: all
