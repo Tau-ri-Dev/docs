@@ -1,7 +1,6 @@
 title: Tau'ri Docs
 description: Documentations for mods and addons from Tau'ri Development
-#theme: just-the-docs
-remote_theme: "just-the-docs/just-the-docs@v0.12.0"
+theme: just-the-docs
 color_scheme: dark
 
 url: "https://docs.justsgmod.eu"
