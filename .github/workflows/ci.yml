@@ -35,16 +35,22 @@ jobs:
         run: bundle exec jekyll build
         env:
           BUNDLE_GEMFILE: Gemfile
-  # Build job
-  build:
+
+  github-pages-build:
+    name: Build (github-pages gem)
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v6
+      - uses: actions/checkout@v6
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.4'
+          ruby-version: "3.4"
           bundler-cache: false
-      - name: Build with Jekyll
+      - name: Bundle Install
+        run: bundle install
+        env:
+          BUNDLE_GEMFILE: Gemfile-github-pages
+      - name: Build Site
         run: bundle exec jekyll build
+        env:
+          BUNDLE_GEMFILE: Gemfile-github-pages

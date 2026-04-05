@@ -21,6 +21,7 @@ exclude:
   - bin/
   - lib/
   - .github/
+  - Gemfile-github-pages
   - Gemfile
   - Gemfile.lock
   - LICENSE
