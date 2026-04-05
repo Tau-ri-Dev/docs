@@ -4,53 +4,19 @@ on:
   push:
     branches: ["main"]
   pull_request:
-    branches: ["main"]
 
 jobs:
-  jekyll-build:
-    name: Build (jekyll gem)
-    strategy:
-      fail-fast: false
-      matrix:
-        jekyll-version: [4.4.1]
-        os: [ubuntu-latest, macos-latest, windows-latest]
-        ruby-version: ["3.4"]
-    runs-on: ${{ matrix.os }}
-    steps:
-      - uses: actions/checkout@v6
-      - name: Setup Ruby 3.4
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: 3.4
-          bundler-cache: false
-      - name: Bundle Install (Jekyll)
-        run: bundle install
-        env:
-          BUNDLE_GEMFILE: Gemfile
-      - name: Init Search
-        run: bundle exec rake search:init
-        env:
-          BUNDLE_GEMFILE: Gemfile
-      - name: Build Site
-        run: bundle exec jekyll build
-        env:
-          BUNDLE_GEMFILE: Gemfile
-
-  github-pages-build:
-    name: Build (github-pages gem)
+  # Build job
+  build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - name: Checkout
+        uses: actions/checkout@v6
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: "3.4"
-          bundler-cache: false
-      - name: Bundle Install
-        run: bundle install
-        env:
-          BUNDLE_GEMFILE: Gemfile-github-pages
-      - name: Build Site
+          ruby-version: '3.3' # Not needed with a .ruby-version file
+          bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+          cache-version: 0 # Increment this number if you need to re-download cached gems
+      - name: Build with Jekyll
         run: bundle exec jekyll build
-        env:
-          BUNDLE_GEMFILE: Gemfile-github-pages
