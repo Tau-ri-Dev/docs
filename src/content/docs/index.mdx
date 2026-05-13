@@ -1,0 +1,45 @@
+---
+title: Home
+description: Documentation for all Tau'ri Dev projects
+template: splash
+lastUpdated: false
+hero:
+  title: Tau'ri Dev Docs
+  tagline: Documentation for all Tau'ri Dev projects
+  image:
+    file: "../../assets/tauri_logo.webp"
+---
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+import LinkCard from "/src/components/LinkCard.astro";
+import LinkCardWithCustomIcon from "/src/components/LinkCardWithCustomIcon.astro";
+
+## Just Stargate Mod
+<CardGrid>
+	<LinkCardWithCustomIcon title="JSG: Core" href="/jsg_core" icon="chevron">
+		A mod originated from the famous TV series Stargate...
+	</LinkCardWithCustomIcon>
+	<LinkCardWithCustomIcon title="Just Stargate Mod" href="/jsg" icon="chevron">
+		A mod originated from the famous TV series Stargate...
+	</LinkCardWithCustomIcon>
+</CardGrid>
+
+#### Addons
+<CardGrid>
+	<LinkCardWithCustomIcon title="JSG: Rings and Transporters" href="/jsg_rings" icon="chevron">
+		A mod originated from the famous TV series Stargate...
+	</LinkCardWithCustomIcon>
+	<LinkCardWithCustomIcon title="JSG: Destiny" href="/jsg_destiny" icon="chevron">
+		A mod originated from the famous TV series Stargate...
+	</LinkCardWithCustomIcon>
+	<LinkCardWithCustomIcon title="JSG: Decor" href="/jsg_decor" icon="chevron">
+		A mod originated from the famous TV series Stargate...
+	</LinkCardWithCustomIcon>
+</CardGrid>
+
+## Other projects
+<CardGrid>
+	<LinkCardWithCustomIcon title="Redstone Jukeboxes" href="/rsj" icon="record">
+		Documentation of the most immersive Stargate mod for Minecraft
+	</LinkCardWithCustomIcon>
+</CardGrid>
