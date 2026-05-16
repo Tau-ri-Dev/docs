@@ -22,7 +22,7 @@
 
 .sl-markdown-content img:not(:where(.not-content *)):not([alt="Diagram"]) {
 	width: 100%;
-}
+}	
 
 .sl-markdown-content :is(img.img-inline, .img-inline img) {
 	margin: 0;
