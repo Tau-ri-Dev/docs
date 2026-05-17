@@ -1,0 +1,936 @@
+{
+  "SnowyHostileWave": {
+    "weight": 1,
+    "chevronsToDial": 7,
+    "allowedOnGates": [
+      "MilkyWay",
+      "Pegasus",
+      "Universe",
+      "Movie",
+      "Tollan"
+    ],
+    "allowedBiomes": [
+      "#forge:is_cold/overworld"
+    ],
+    "allowedForDifficulties": [
+      "HARD",
+      "NORMAL",
+      "EASY"
+    ],
+    "entities": [
+      {
+        "name": "minecraft:stray",
+        "weight": 25,
+        "nbt": "{HandItems:[{Count:1,id:bow},{}],ArmorItems:[{},{},{},{Count:1,id:leather_helmet,tag:{display:{color:16383998}}}],HandDropChances:[0.1f,0.0f]}"
+      },
+      {
+        "name": "minecraft:stray",
+        "weight": 15,
+        "nbt": "{HandItems:[{Count:1,id:bow,tag:{Enchantments:[{id:power,lvl:1},{id:punch,lvl:1}]}},{}],ArmorItems:[{},{},{},{Count:1,id:leather_helmet,tag:{display:{color:16383998}}}]}"
+      },
+      {
+        "name": "minecraft:skeleton",
+        "weight": 25,
+        "nbt": "{HandItems:[{Count:1,id:bow},{}], ArmorItems:[{},{},{},{Count:1, id:leather_helmet}], ArmorDropChances:[0.0f,0.0f,0.0f,0.3f]}"
+      },
+      {
+        "name": "minecraft:skeleton",
+        "weight": 15,
+        "nbt": "{HandItems:[{Count:1,id:bow},{}], ArmorItems:[{},{},{},{Count:1, id:iron_helmet}], ArmorDropChances:[0.0f,0.0f,0.0f,0.1f]}"
+      },
+      {
+        "name": "minecraft:zombie",
+        "weight": 10,
+        "nbt": "{CanPickUpLoot:1b,CanBreakDoors:1b,ArmorItems:[{},{},{},{Count:1,id:leather_helmet}]}"
+      }
+    ],
+    "selectRandomMobs": true,
+    "shouldOpenIrisChance": 0.0,
+    "randomMobsCount": {
+      "min": 5,
+      "max": 10
+    }
+  },
+  "SwampHostileWave": {
+    "weight": 1,
+    "chevronsToDial": 7,
+    "allowedOnGates": [
+      "MilkyWay",
+      "Pegasus",
+      "Universe",
+      "Movie",
+      "Tollan"
+    ],
+    "allowedBiomes": [
+      "#forge:is_swamp"
+    ],
+    "allowedForDifficulties": [
+      "HARD",
+      "NORMAL",
+      "EASY"
+    ],
+    "entities": [
+      {
+        "name": "minecraft:zombie",
+        "weight": 10,
+        "nbt": "{CanPickUpLoot:1b,ArmorItems:[{},{Count:1,id:leather_leggings},{},{Count:1,id:leather_helmet}],ArmorDropChances:[0.0f,0.3f,0.0f,0.2f]}"
+      },
+      {
+        "name": "minecraft:skeleton",
+        "weight": 10,
+        "nbt": "{HandItems:[{Count:1,id:bow},{}], ArmorItems:[{},{},{},{Count:1, id:iron_helmet}], ArmorDropChances:[0.0f,0.0f,0.0f,0.1f]}"
+      },
+      {
+        "name": "minecraft:creeper",
+        "weight": 3,
+        "nbt": "{}"
+      },
+      {
+        "name": "minecraft:witch",
+        "weight": 1,
+        "nbt": "{}"
+      },
+      {
+        "name": "minecraft:spider",
+        "weight": 7,
+        "nbt": "{}"
+      },
+      {
+        "name": "minecraft:spider",
+        "weight": 1,
+        "nbt": "{Passengers:[{id:skeleton,HandItems:[{Count:1,id:bow},{}],ArmorItems:[{},{},{},{Count:1,id:chainmail_helmet,tag:{Enchantments:[{id:thorns,lvl:1}]}}]}]}"
+      },
+      {
+        "name": "minecraft:slime",
+        "weight": 4,
+        "nbt": "{}"
+      }
+    ],
+    "selectRandomMobs": true,
+    "shouldOpenIrisChance": 0.0,
+    "randomMobsCount": {
+      "min": 2,
+      "max": 7
+    }
+  },
+  "VillagerTaigaWave": {
+    "weight": 1,
+    "chevronsToDial": 7,
+    "allowedOnGates": [
+      "MilkyWay",
+      "Pegasus",
+      "Universe",
+      "Movie",
+      "Tollan"
+    ],
+    "allowedBiomes": [
+      "#minecraft:has_structure/village_taiga",
+      "#minecraft:has_structure/village_snowy"
+    ],
+    "allowedForDifficulties": [
+      "HARD",
+      "NORMAL",
+      "EASY",
+      "PEACEFUL"
+    ],
+    "entities": [
+      {
+        "name": "minecraft:villager",
+        "weight": 5,
+        "nbt": "{VillagerData:{profession:fletcher,level:1,type:taiga}, Xp: 1}"
+      },
+      {
+        "name": "minecraft:villager",
+        "weight": 5,
+        "nbt": "{VillagerData:{profession:armorer,level:1,type:taiga}, Xp: 1}"
+      },
+      {
+        "name": "minecraft:villager",
+        "weight": 5,
+        "nbt": "{VillagerData:{profession:toolsmith,level:1,type:taiga}, Xp: 1}"
+      },
+      {
+        "name": "minecraft:villager",
+        "weight": 5,
+        "nbt": "{VillagerData:{profession:weaponsmith,level:1,type:taiga}, Xp: 1}"
+      },
+      {
+        "name": "minecraft:villager",
+        "weight": 5,
+        "nbt": "{VillagerData:{profession:leatherworker,level:1,type:taiga}, Xp: 1}"
+      },
+      {
+        "name": "minecraft:villager",
+        "weight": 10,
+        "nbt": "{VillagerData:{profession:nitwit,level:1,type:taiga}}"
+      },
+      {
+        "name": "minecraft:villager",
+        "weight": 1,
+        "nbt": "{VillagerData:{profession:\"jsg:priest_taiga\",level:1,type:taiga}, Xp: 1}"
+      },
+      {
+        "name": "minecraft:pig",
+        "weight": 1,
+        "nbt": "{}"
+      }
+    ],
+    "selectRandomMobs": true,
+    "shouldOpenIrisChance": 0.3,
+    "randomMobsCount": {
+      "min": 4,
+      "max": 6
+    }
+  },
+  "DesertHostileWave": {
+    "weight": 1,
+    "chevronsToDial": 7,
+    "allowedOnGates": [
+      "MilkyWay",
+      "Pegasus",
+      "Universe",
+      "Movie",
+      "Tollan"
+    ],
+    "allowedBiomes": [
+      "#forge:is_sandy"
+    ],
+    "allowedForDifficulties": [
+      "HARD",
+      "NORMAL",
+      "EASY"
+    ],
+    "entities": [
+      {
+        "name": "minecraft:husk",
+        "weight": 30,
+        "nbt": "{}"
+      },
+      {
+        "name": "minecraft:skeleton",
+        "weight": 25,
+        "nbt": "{HandItems:[{Count:1,id:bow},{}], ArmorItems:[{},{},{},{Count:1, id:golden_helmet}], ArmorDropChances:[0.0f,0.0f,0.0f,0.1f]}"
+      },
+      {
+        "name": "minecraft:skeleton",
+        "weight": 25,
+        "nbt": "{HandItems:[{Count:1,id:bow},{}], ArmorItems:[{},{},{},{Count:1, id:leather_helmet}], ArmorDropChances:[0.0f,0.0f,0.0f,0.4f]}"
+      },
+      {
+        "name": "minecraft:spider",
+        "weight": 10,
+        "nbt": "{}"
+      }
+    ],
+    "selectRandomMobs": true,
+    "shouldOpenIrisChance": 0.0,
+    "randomMobsCount": {
+      "min": 5,
+      "max": 20
+    }
+  },
+  "OceanHostileWave": {
+    "weight": 1,
+    "chevronsToDial": 7,
+    "allowedOnGates": [
+      "MilkyWay",
+      "Pegasus",
+      "Universe",
+      "Movie",
+      "Tollan"
+    ],
+    "allowedBiomes": [
+      "#minecraft:is_ocean"
+    ],
+    "allowedForDifficulties": [
+      "HARD",
+      "NORMAL",
+      "EASY"
+    ],
+    "entities": [
+      {
+        "name": "minecraft:drowned",
+        "weight": 15,
+        "nbt": "{CanBreakDoors:1b}"
+      },
+      {
+        "name": "minecraft:drowned",
+        "weight": 8,
+        "nbt": "{HandItems:[{Count:1,id:trident},{}]}"
+      },
+      {
+        "name": "minecraft:drowned",
+        "weight": 10,
+        "nbt": "{CanBreakDoors:1b, HandItems:[{Count:1,id:nautilus_shell},{}]}"
+      },
+      {
+        "name": "minecraft:guardian",
+        "weight": 2,
+        "nbt": "{}"
+      }
+    ],
+    "selectRandomMobs": true,
+    "shouldOpenIrisChance": 0.0,
+    "randomMobsCount": {
+      "min": 4,
+      "max": 7
+    }
+  },
+  "NetherZombiePiglinWave": {
+    "weight": 1,
+    "chevronsToDial": 7,
+    "allowedOnGates": [
+      "MilkyWay",
+      "Pegasus",
+      "Universe",
+      "Movie",
+      "Tollan"
+    ],
+    "allowedBiomes": [
+      "#minecraft:is_nether"
+    ],
+    "allowedForDifficulties": [
+      "HARD",
+      "NORMAL",
+      "EASY"
+    ],
+    "entities": [
+      {
+        "name": "minecraft:zombified_piglin",
+        "weight": 10,
+        "nbt": "{CanBreakDoors:1b,HandItems:[{Count:1,id:golden_sword},{}]}"
+      },
+      {
+        "name": "minecraft:skeleton",
+        "weight": 4,
+        "nbt": "{HandItems:[{Count:1,id:bow},{}]}"
+      }
+    ],
+    "selectRandomMobs": true,
+    "shouldOpenIrisChance": 0.0,
+    "randomMobsCount": {
+      "min": 3,
+      "max": 10
+    }
+  },
+  "VillagerSavannaWave": {
+    "weight": 1,
+    "chevronsToDial": 7,
+    "allowedOnGates": [
+      "MilkyWay",
+      "Pegasus",
+      "Universe",
+      "Movie",
+      "Tollan"
+    ],
+    "allowedBiomes": [
+      "#minecraft:has_structure/village_savanna",
+      "#minecraft:has_structure/village_plains",
+      "#minecraft:has_structure/village_desert"
+    ],
+    "allowedForDifficulties": [
+      "HARD",
+      "NORMAL",
+      "EASY",
+      "PEACEFUL"
+    ],
+    "entities": [
+      {
+        "name": "minecraft:villager",
+        "weight": 5,
+        "nbt": "{VillagerData:{profession:cartographer,level:1,type:savanna}, Xp: 1}"
+      },
+      {
+        "name": "minecraft:villager",
+        "weight": 5,
+        "nbt": "{VillagerData:{profession:cleric,level:1,type:savanna}, Xp: 1}"
+      },
+      {
+        "name": "minecraft:villager",
+        "weight": 5,
+        "nbt": "{VillagerData:{profession:leatherworker,level:1,type:savanna}, Xp: 1}"
+      },
+      {
+        "name": "minecraft:villager",
+        "weight": 5,
+        "nbt": "{VillagerData:{profession:butcher,level:1,type:savanna}, Xp: 1}"
+      },
+      {
+        "name": "minecraft:villager",
+        "weight": 10,
+        "nbt": "{VillagerData:{profession:nitwit,level:1,type:savanna}}"
+      },
+      {
+        "name": "minecraft:villager",
+        "weight": 1,
+        "nbt": "{VillagerData:{profession:\"jsg:priest_savanna\",level:1,type:savanna}, Xp: 1}"
+      },
+      {
+        "name": "minecraft:villager",
+        "weight": 1,
+        "nbt": "{VillagerData:{profession:\"jsg:priest_swamp\",level:1,type:swamp}, Xp: 1}"
+      },
+      {
+        "name": "minecraft:cat",
+        "weight": 1,
+        "nbt": "{variant:red}"
+      },
+      {
+        "name": "minecraft:sheep",
+        "weight": 1,
+        "nbt": "{}"
+      }
+    ],
+    "selectRandomMobs": true,
+    "shouldOpenIrisChance": 0.3,
+    "randomMobsCount": {
+      "min": 3,
+      "max": 8
+    }
+  },
+  "JungleHostileWave": {
+    "weight": 1,
+    "chevronsToDial": 7,
+    "allowedOnGates": [
+      "MilkyWay",
+      "Pegasus",
+      "Universe",
+      "Movie",
+      "Tollan"
+    ],
+    "allowedBiomes": [
+      "is_wet/overworld",
+      "#minecraft:is_forest"
+    ],
+    "allowedForDifficulties": [
+      "HARD",
+      "NORMAL",
+      "EASY"
+    ],
+    "entities": [
+      {
+        "name": "minecraft:zombie",
+        "weight": 5,
+        "nbt": "{CanPickUpLoot:1b,ArmorItems:[{},{Count:1,id:leather_leggings},{},{Count:1,id:leather_helmet}],ArmorDropChances:[0.0f,0.3f,0.0f,0.2f]}"
+      },
+      {
+        "name": "minecraft:skeleton",
+        "weight": 5,
+        "nbt": "{HandItems:[{Count:1,id:bow},{}], ArmorItems:[{},{},{},{Count:1, id:golden_helmet}]}"
+      },
+      {
+        "name": "minecraft:spider",
+        "weight": 10,
+        "nbt": "{}"
+      },
+      {
+        "name": "minecraft:spider",
+        "weight": 1,
+        "nbt": "{Passengers:[{id:skeleton,HandItems:[{Count:1,id:bow},{}],ArmorItems:[{},{},{},{Count:1,id:chainmail_helmet,tag:{Enchantments:[{id:thorns,lvl:1}]}}]}]}"
+      }
+    ],
+    "selectRandomMobs": true,
+    "shouldOpenIrisChance": 0.0,
+    "randomMobsCount": {
+      "min": 2,
+      "max": 7
+    }
+  },
+  "VindicatorsWave": {
+    "weight": 1,
+    "chevronsToDial": 7,
+    "allowedOnGates": [
+      "MilkyWay",
+      "Pegasus",
+      "Universe",
+      "Movie",
+      "Tollan"
+    ],
+    "allowedBiomes": [
+      "#minecraft:is_overworld"
+    ],
+    "allowedForDifficulties": [
+      "NORMAL",
+      "HARD"
+    ],
+    "entities": [
+      {
+        "name": "minecraft:vindicator",
+        "weight": 40,
+        "nbt": "{HandItems:[{Count:1, id:iron_axe},{}],HandDropChances:[0.1f,0.0f]}"
+      },
+      {
+        "name": "minecraft:evoker",
+        "weight": 1,
+        "nbt": "{}"
+      },
+      {
+        "name": "minecraft:witch",
+        "weight": 5,
+        "nbt": "{}"
+      }
+    ],
+    "selectRandomMobs": true,
+    "shouldOpenIrisChance": 0.05,
+    "randomMobsCount": {
+      "min": 10,
+      "max": 15
+    }
+  },
+  "VillagerPlainsWave": {
+    "weight": 1,
+    "chevronsToDial": 7,
+    "allowedOnGates": [
+      "MilkyWay",
+      "Pegasus",
+      "Universe",
+      "Movie",
+      "Tollan"
+    ],
+    "allowedBiomes": [
+      "#minecraft:has_structure/village_plains",
+      "#minecraft:has_structure/village_savanna"
+    ],
+    "allowedForDifficulties": [
+      "HARD",
+      "NORMAL",
+      "EASY",
+      "PEACEFUL"
+    ],
+    "entities": [
+      {
+        "name": "minecraft:villager",
+        "weight": 5,
+        "nbt": "{VillagerData:{profession:farmer,level:1,type:plains}, Xp: 1}"
+      },
+      {
+        "name": "minecraft:villager",
+        "weight": 5,
+        "nbt": "{VillagerData:{profession:fisherman,level:1,type:plains}, Xp: 1}"
+      },
+      {
+        "name": "minecraft:villager",
+        "weight": 5,
+        "nbt": "{VillagerData:{profession:leatherworker,level:1,type:plains}, Xp: 1}"
+      },
+      {
+        "name": "minecraft:villager",
+        "weight": 5,
+        "nbt": "{VillagerData:{profession:armorer,level:1,type:plains}, Xp: 1}"
+      },
+      {
+        "name": "minecraft:villager",
+        "weight": 10,
+        "nbt": "{VillagerData:{profession:nitwit,level:1,type:plains}}"
+      },
+      {
+        "name": "minecraft:villager",
+        "weight": 1,
+        "nbt": "{VillagerData:{profession:\"jsg:priest_plains\",level:1,type:plains}, Xp: 1}"
+      },
+      {
+        "name": "minecraft:villager",
+        "weight": 1,
+        "nbt": "{VillagerData:{profession:\"jsg:priest_jungle\",level:1,type:jungle}, Xp: 1}"
+      },
+      {
+        "name": "minecraft:chicken",
+        "weight": 1,
+        "nbt": "{}"
+      }
+    ],
+    "selectRandomMobs": true,
+    "shouldOpenIrisChance": 0.3,
+    "randomMobsCount": {
+      "min": 3,
+      "max": 6
+    }
+  },
+  "VillagerSnowyWave": {
+    "weight": 1,
+    "chevronsToDial": 7,
+    "allowedOnGates": [
+      "MilkyWay",
+      "Pegasus",
+      "Universe",
+      "Movie",
+      "Tollan"
+    ],
+    "allowedBiomes": [
+      "#minecraft:has_structure/village_snowy",
+      "#minecraft:has_structure/village_taiga"
+    ],
+    "allowedForDifficulties": [
+      "HARD",
+      "NORMAL",
+      "EASY",
+      "PEACEFUL"
+    ],
+    "entities": [
+      {
+        "name": "minecraft:villager",
+        "weight": 5,
+        "nbt": "{VillagerData:{profession:farmer,level:1,type:snow}, Xp: 1}"
+      },
+      {
+        "name": "minecraft:villager",
+        "weight": 5,
+        "nbt": "{VillagerData:{profession:armorer,level:1,type:snow}, Xp: 1}"
+      },
+      {
+        "name": "minecraft:villager",
+        "weight": 5,
+        "nbt": "{VillagerData:{profession:librarian,level:1,type:snow}, Xp: 1}"
+      },
+      {
+        "name": "minecraft:villager",
+        "weight": 10,
+        "nbt": "{VillagerData:{profession:nitwit,level:1,type:snow}}"
+      },
+      {
+        "name": "minecraft:villager",
+        "weight": 1,
+        "nbt": "{VillagerData:{profession:\"jsg:priest_snow\",level:1,type:snow}, Xp: 1}"
+      },
+      {
+        "name": "minecraft:iron_golem",
+        "weight": 1,
+        "nbt": "{}"
+      }
+    ],
+    "selectRandomMobs": true,
+    "shouldOpenIrisChance": 0.3,
+    "randomMobsCount": {
+      "min": 2,
+      "max": 7
+    }
+  },
+  "StandardHostileWave": {
+    "weight": 1,
+    "chevronsToDial": 7,
+    "allowedOnGates": [
+      "MilkyWay",
+      "Pegasus",
+      "Universe",
+      "Movie",
+      "Tollan"
+    ],
+    "blacklistedBiomes": [
+      "#minecraft:is_nether",
+      "#minecraft:is_end",
+      "#forge:is_sandy"
+    ],
+    "allowedForDifficulties": [
+      "HARD",
+      "NORMAL",
+      "EASY"
+    ],
+    "entities": [
+      {
+        "name": "minecraft:zombie",
+        "weight": 50,
+        "nbt": "{CanPickUpLoot:1b,CanBreakDoors:1b,ArmorItems:[{},{},{},{Count:1,id:leather_helmet,tag:{Enchantments:[{id:protection,lvl:2}]}}],ArmorDropChances:[0.0f,0.0f,0.0f,0.2f]}"
+      },
+      {
+        "name": "minecraft:zombie",
+        "weight": 50,
+        "nbt": "{CanBreakDoors:1b,HandItems:[{Count:1,id:stone_sword},{}],ArmorItems:[{},{},{},{Count:1,id:iron_helmet}]}"
+      },
+      {
+        "name": "minecraft:zombie",
+        "weight": 50,
+        "nbt": "{CanPickUpLoot:1b,ArmorItems:[{},{Count:1,id:leather_leggings},{},{Count:1,id:leather_helmet}],ArmorDropChances:[0.0f,0.3f,0.0f,0.2f]}"
+      },
+      {
+        "name": "minecraft:zombie",
+        "weight": 25,
+        "nbt": "{IsBaby:1,CanPickUpLoot:1b,ArmorItems:[{},{},{},{Count:1,id:leather_helmet}],ArmorDropChances:[0.0f,0.0f,0.0f,0.2f]}"
+      },
+      {
+        "name": "minecraft:chicken",
+        "weight": 2,
+        "nbt": "{Passengers:[{id:zombie,IsBaby:1,HandItems:[{Count:1,id:stone_pickaxe,tag:{Enchantments:[{id:efficiency,lvl:3}]}},{}],ArmorItems:[{},{},{},{Count:1,id:golden_helmet,tag:{Enchantments:[{id:projectile_protection,lvl:2}]}}]}]}"
+      }
+    ],
+    "selectRandomMobs": true,
+    "shouldOpenIrisChance": 0.0,
+    "randomMobsCount": {
+      "min": 5,
+      "max": 15
+    }
+  },
+  "NetherFortressWave": {
+    "weight": 1,
+    "chevronsToDial": 7,
+    "allowedOnGates": [
+      "MilkyWay",
+      "Pegasus",
+      "Universe",
+      "Movie",
+      "Tollan"
+    ],
+    "allowedBiomes": [
+      "minecraft:is_nether"
+    ],
+    "allowedForDifficulties": [
+      "HARD",
+      "NORMAL",
+      "EASY"
+    ],
+    "entities": [
+      {
+        "name": "minecraft:zombified_piglin",
+        "weight": 15,
+        "nbt": "{CanBreakDoors:1b,HandItems:[{Count:1,id:golden_sword},{}]}"
+      },
+      {
+        "name": "minecraft:blaze",
+        "weight": 5,
+        "nbt": "{}"
+      },
+      {
+        "name": "wither_skeleton",
+        "weight": 1,
+        "nbt": "{HandItems:[{Count:1,id:stone_sword},{}]}"
+      }
+    ],
+    "selectRandomMobs": true,
+    "shouldOpenIrisChance": 0.0,
+    "randomMobsCount": {
+      "min": 4,
+      "max": 12
+    }
+  },
+  "EndWave": {
+    "weight": 1,
+    "chevronsToDial": 8,
+    "allowedOnGates": [
+      "MilkyWay",
+      "Pegasus",
+      "Universe",
+      "Movie",
+      "Tollan"
+    ],
+    "allowedBiomes": [
+      "#minecraft:is_end"
+    ],
+    "allowedForDifficulties": [
+      "HARD",
+      "NORMAL",
+      "EASY"
+    ],
+    "entities": [
+      {
+        "name": "minecraft:enderman",
+        "weight": 1,
+        "nbt": "{}"
+      }
+    ],
+    "selectRandomMobs": true,
+    "shouldOpenIrisChance": 0.0,
+    "randomMobsCount": {
+      "min": 4,
+      "max": 9
+    }
+  },
+  "TraderWave": {
+    "weight": 1,
+    "chevronsToDial": 9,
+    "allowedOnGates": [
+      "MilkyWay",
+      "Pegasus",
+      "Universe",
+      "Movie",
+      "Tollan"
+    ],
+    "allowedBiomes": [
+      "#minecraft:is_overworld"
+    ],
+    "allowedForDifficulties": [
+      "HARD",
+      "NORMAL",
+      "EASY",
+      "PEACEFUL"
+    ],
+    "entities": [
+      {
+        "name": "minecraft:wandering_trader",
+        "weight": 1,
+        "nbt": "{UUID:%UUID%,DespawnDelay:2147483647}"
+      },
+      {
+        "name": "minecraft:trader_llama",
+        "weight": 2,
+        "nbt": "{Leashed:1b,Leash:{UUID:%UUID%}}"
+      }
+    ],
+    "selectRandomMobs": false,
+    "shouldOpenIrisChance": 0.0
+  },
+  "NetherHuntingPiglinWave": {
+    "weight": 1,
+    "chevronsToDial": 7,
+    "allowedOnGates": [
+      "MilkyWay",
+      "Pegasus",
+      "Universe",
+      "Movie",
+      "Tollan"
+    ],
+    "allowedBiomes": [
+      "#minecraft:is_nether"
+    ],
+    "allowedForDifficulties": [
+      "HARD",
+      "NORMAL",
+      "EASY"
+    ],
+    "entities": [
+      {
+        "name": "minecraft:hoglin",
+        "weight": 7,
+        "nbt": "{Age:-25000}"
+      },
+      {
+        "name": "minecraft:hoglin",
+        "weight": 7,
+        "nbt": "{}"
+      },
+      {
+        "name": "minecraft:piglin_brute",
+        "weight": 10,
+        "nbt": "{}"
+      },
+      {
+        "name": "minecraft:piglin",
+        "weight": 20,
+        "nbt": "{HandItems:[{Count:1,id:crossbow},{}]}"
+      },
+      {
+        "name": "minecraft:piglin",
+        "weight": 20,
+        "nbt": "{HandItems:[{Count:1,id:crossbow},{}],ArmorItems:[{},{},{},{Count:1,id:golden_helmet}],ArmorDropChances:[0.0f,0.0f,0.0f,1.0f]}"
+      },
+      {
+        "name": "minecraft:piglin",
+        "weight": 20,
+        "nbt": "{HandItems:[{Count:1,id:crossbow},{}],ArmorItems:[{Count:1,id:golden_boots},{Count:1,id:golden_leggings},{},{}],ArmorDropChances:[0.1f,0.1f,0.0f,0.0f]}"
+      },
+      {
+        "name": "minecraft:piglin",
+        "weight": 20,
+        "nbt": "{HandItems:[{Count:1,id:crossbow},{}],ArmorItems:[{},{},{Count:1,id:golden_chestplate},{}],ArmorDropChances:[0.0f,0.0f,0.1f,0.0f]}"
+      },
+      {
+        "name": "minecraft:piglin",
+        "weight": 20,
+        "nbt": "{HandItems:[{Count:1,id:crossbow},{}],ArmorItems:[{Count:1,id:golden_boots},{},{Count:1,id:golden_chestplate},{Count:1,id:golden_helmet}],ArmorDropChances:[0.1f,0.1f,0.1f,0.0f]}"
+      },
+      {
+        "name": "minecraft:piglin",
+        "weight": 20,
+        "nbt": "{HandItems:[{Count:1,id:crossbow},{}],ArmorItems:[{Count:1,id:golden_boots},{},{Count:1,id:golden_chestplate},{}],ArmorDropChances:[0.1f,0.0f,0.1f,0.0f]}"
+      },
+      {
+        "name": "minecraft:piglin",
+        "weight": 20,
+        "nbt": "{HandItems:[{Count:1,id:golden_sword},{}]}"
+      },
+      {
+        "name": "minecraft:piglin",
+        "weight": 20,
+        "nbt": "{HandItems:[{Count:1,id:golden_sword},{}],ArmorItems:[{},{},{},{Count:1,id:golden_helmet}],ArmorDropChances:[0.0f,0.0f,0.0f,1.0f]}"
+      },
+      {
+        "name": "minecraft:piglin",
+        "weight": 20,
+        "nbt": "{HandItems:[{Count:1,id:golden_sword},{}],ArmorItems:[{Count:1,id:golden_boots},{Count:1,id:golden_leggings},{},{}],ArmorDropChances:[0.1f,0.1f,0.0f,0.0f]}"
+      },
+      {
+        "name": "minecraft:piglin",
+        "weight": 20,
+        "nbt": "{HandItems:[{Count:1,id:golden_sword},{}],ArmorItems:[{},{},{Count:1,id:golden_chestplate},{}],ArmorDropChances:[0.0f,0.0f,0.1f,0.0f]}"
+      },
+      {
+        "name": "minecraft:piglin",
+        "weight": 20,
+        "nbt": "{HandItems:[{Count:1,id:golden_sword},{}],ArmorItems:[{Count:1,id:golden_boots},{},{Count:1,id:golden_chestplate},{Count:1,id:golden_helmet}],ArmorDropChances:[0.1f,0.1f,0.1f,0.0f]}"
+      },
+      {
+        "name": "minecraft:piglin",
+        "weight": 20,
+        "nbt": "{HandItems:[{Count:1,id:golden_sword},{}],ArmorItems:[{Count:1,id:golden_boots},{},{Count:1,id:golden_chestplate},{}],ArmorDropChances:[0.1f,0.0f,0.1f,0.0f]}"
+      }
+    ],
+    "selectRandomMobs": true,
+    "shouldOpenIrisChance": 0.05,
+    "randomMobsCount": {
+      "min": 6,
+      "max": 12
+    }
+  },
+  "VillagerDesertWave": {
+    "weight": 1,
+    "chevronsToDial": 7,
+    "allowedOnGates": [
+      "MilkyWay",
+      "Pegasus",
+      "Universe",
+      "Movie",
+      "Tollan"
+    ],
+    "allowedBiomes": [
+      "#minecraft:has_structure/village_desert",
+      "#minecraft:has_structure/village_savanna"
+    ],
+    "allowedForDifficulties": [
+      "HARD",
+      "NORMAL",
+      "EASY",
+      "PEACEFUL"
+    ],
+    "entities": [
+      {
+        "name": "minecraft:villager",
+        "weight": 5,
+        "nbt": "{VillagerData:{profession:cartographer,level:1,type:desert}, Xp: 1}"
+      },
+      {
+        "name": "minecraft:villager",
+        "weight": 5,
+        "nbt": "{VillagerData:{profession:librarian,level:1,type:desert}, Xp: 1}"
+      },
+      {
+        "name": "minecraft:villager",
+        "weight": 5,
+        "nbt": "{VillagerData:{profession:mason,level:1,type:desert}, Xp: 1}"
+      },
+      {
+        "name": "minecraft:villager",
+        "weight": 5,
+        "nbt": "{VillagerData:{profession:toolsmith,level:1,type:desert}, Xp: 1}"
+      },
+      {
+        "name": "minecraft:villager",
+        "weight": 10,
+        "nbt": "{VillagerData:{profession:nitwit,level:1,type:desert}}"
+      },
+      {
+        "name": "minecraft:villager",
+        "weight": 10,
+        "nbt": "{VillagerData:{profession:\"jsg:priest_desert\",level:1,type:desert}, Xp: 1}"
+      },
+      {
+        "name": "minecraft:rabbit",
+        "weight": 1,
+        "nbt": "{}"
+      }
+    ],
+    "selectRandomMobs": true,
+    "shouldOpenIrisChance": 0.3,
+    "randomMobsCount": {
+      "min": 4,
+      "max": 8
+    }
+  }
+}

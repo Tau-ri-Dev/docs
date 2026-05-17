@@ -1,0 +1,42 @@
+{
+	"waveID": {
+		"weight": 40,
+		"chevronsToDial": 7,
+		"allowedOnGates": [
+			"MilkyWay",
+			"Pegasus",
+			"Universe",
+			"Movie",
+			"Tollan"
+		],
+		"allowedBiomes": [
+			"#forge:is_cold/overworld"
+		],
+		"blacklistedBiomes": [
+			"#minecraft:is_ocean"
+		],
+		"allowedForDifficulties": [
+			"HARD",
+			"NORMAL",
+			"EASY"
+		],
+		"entities": [
+			{
+				"name": "minecraft:stray",
+				"weight": 25,
+				"nbt": "{HandItems:[{Count:1,id:bow}]}"
+			},
+			{
+				"name": "minecraft:skeleton",
+				"weight": 15,
+				"nbt": "{HandItems:[{Count:1,id:bow}]}"
+			}
+		],
+		"selectRandomMobs": true,
+		"shouldOpenIrisChance": 0.0,
+		"randomMobsCount": {
+			"min": 5,
+			"max": 10
+		}
+	}
+}
