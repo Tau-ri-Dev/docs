@@ -1,0 +1,62 @@
+{
+  "jsg:abydos": {
+    "distance": 13,
+    "groups": [
+      "milkyway"
+    ],
+    "origins": {
+      "jsg:stargate/milkyway": {
+        "jsg_core:normal": "jsg:abydos",
+        "jsg_core:aged": "jsg:abydos"
+      }
+    },
+    "hasStargate": true,
+    "lightingBoltChance": 0.0,
+    "isBlackHoleDim": false
+  },
+  "minecraft:overworld": {
+    "distance": 0,
+    "groups": [
+      "milkyway"
+    ],
+    "origins": {
+      "jsg:stargate/milkyway": {
+        "jsg_core:normal": "jsg:tauri",
+        "jsg_core:frost": "jsg:antarctica"
+      }
+    },
+    "hasStargate": true,
+    "lightingBoltChance": 1.0,
+    "isBlackHoleDim": false
+  },
+  "minecraft:the_nether": {
+    "distance": 0,
+    "groups": [
+      "milkyway"
+    ],
+    "origins": {
+      "jsg:stargate/milkyway": {
+        "jsg_core:normal": "jsg:nether",
+        "jsg_core:sooty": "jsg:nether",
+        "jsg_core:aged": "jsg:nether"
+      }
+    },
+    "hasStargate": true,
+    "lightingBoltChance": 0.0,
+    "isBlackHoleDim": false
+  },
+  "minecraft:the_end": {
+    "distance": 0,
+    "groups": [
+      "milkyway"
+    ],
+    "origins": {
+      "jsg:stargate/milkyway": {
+        "jsg_core:normal": "jsg:p7j989"
+      }
+    },
+    "hasStargate": true,
+    "lightingBoltChance": 0.0,
+    "isBlackHoleDim": false
+  }
+}

@@ -1,0 +1,92 @@
+#Controls the horizontal distance the DHD will look for a stargate in blocks.
+#SIDE: SERVER
+#Range: 1 ~ 64
+"DHD range's radius horizontal" = 25
+
+#Controls the vertical distance the DHD will look for a stargate in blocks.
+#SIDE: SERVER
+#Range: 1 ~ 64
+"DHD range's radius vertical" = 15
+
+#Controls the horizontal distance the dialer will look for a Universe stargate in blocks.
+#SIDE: SERVER
+#Range: 1 ~ 64
+"Universe dialer max horizontal reach radius" = 10
+
+#Controls the maximum capacity of refined naquadah the DHD can hold in millibuckets
+#SIDE: SERVER/CLIENT
+#Range: 1 ~ 128000
+"DHD's max fluid capacity" = 16000
+
+#When capacity upgrade is placed in the DHD,
+#then multiply internal capacity by this number
+#SIDE: SERVER/CLIENT
+#Range: 1.0 ~ 5.0
+"Capacity upgrade multiplier" = 2.0
+
+#The amount of RF energy per 1mb of Naquadah
+#SIDE: SERVER
+#Range: 1 ~ 50000
+"Energy per 1mB Naquadah" = 10240
+
+#Energy per 1mB is multiplied by this
+#when efficiency upgrade is placed in the DHD
+#SIDE: SERVER
+#Range: 1.0 ~ 5.0
+"Efficiency upgrade multiplier" = 1.4
+
+#SIDE: SERVER
+#Range: 0.0 ~ 1.0
+"Cold fusion reactor activation energy level" = 0.9
+
+#SIDE: SERVER
+#Range: 0.0 ~ 1.0
+"Cold fusion reactor deactivation energy level" = 0.98
+
+#THIS OPTION CAN BE OVERRIDE BY SETTING IT IN STARGATE GUI
+#SIDE: SERVER
+"Enable press sound when dialing with computer" = false
+
+#Enable opening last chevron while dialing milkyway gate with dhd
+#THIS OPTION CAN BE OVERRIDE BY SETTING IT IN STARGATE GUI
+#SIDE: SERVER
+"Enable opening last chevron while dialing with dhd" = true
+
+#SIDE: CLIENT
+"Enable hint when dialing on DHDs with notebook page" = true
+
+["Dialing helper colors"]
+	["Dialing helper colors".Normal]
+		#Color used when dialing the first 6 glyphs of the address
+		#Set colors of each dial helper button
+		#SIDE: CLIENT
+		#Range: 0 ~ 255
+		red = 127
+		#Range: 0 ~ 255
+		green = 255
+		#Range: 0 ~ 255
+		blue = 255
+
+	["Dialing helper colors".ExtraSymbols]
+		#Color used when dialing the extended 7th or 8th glyph of the address
+		#Set colors of each dial helper button
+		#SIDE: CLIENT
+		#Range: 0 ~ 255
+		red = 229
+		#Range: 0 ~ 255
+		green = 107
+		#Range: 0 ~ 255
+		blue = 238
+
+	["Dialing helper colors".Origin]
+		#Color used when dialing the point of origin glyph
+		#Set colors of each dial helper button
+		#You should use HEX values
+		#SIDE: CLIENT
+		#Range: 0 ~ 255
+		red = 127
+		#Range: 0 ~ 255
+		green = 255
+		#Range: 0 ~ 255
+		blue = 127
+

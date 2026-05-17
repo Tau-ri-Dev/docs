@@ -1,0 +1,5 @@
+#Specifies transparency of glyphs on notebook page
+#SIDE: CLIENT
+#Range: 0.0 ~ 1.0
+"Notebook page Glyph transparency" = 0.75
+

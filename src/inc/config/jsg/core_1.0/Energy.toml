@@ -1,0 +1,7 @@
+#SIDE: SERVER/CLIENT
+#Range: > 4608
+"Capacitor's internal buffer size" = 17820000
+#SIDE: SERVER
+#Range: 1 ~ 500000
+"Capacitor's max power throughput" = 26360
+

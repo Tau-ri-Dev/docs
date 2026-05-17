@@ -14,14 +14,17 @@ export default defineConfig({
     },
     integrations: [
         starlight({
-            favicon: '/favicon.png',
+            favicon: '/assets/favicon.png',
             title: 'Tau\'ri Dev Docs',
             logo: {
                 light: '/src/assets/tauri_logo_dark.webp',
                 dark: '/src/assets/tauri_logo.webp',
                 replacesTitle: false,
             },
-            social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/withastro/starlight' }],
+            social: [
+                { icon: 'discord', label: 'Discord', href: 'https://discord.justsgmod.eu/' },
+                { icon: 'github', label: 'GitHub', href: 'https://github.com/Tau-ri-Dev' }
+            ],
             defaultLocale: 'root',
             locales: {
                 root: {
@@ -57,10 +60,89 @@ export default defineConfig({
                                         {
                                             label: 'Getting started',
                                             items: [{ autogenerate: { directory: 'jsg/getting-started' } }],
+                                        },
+                                        {
+                                            label: 'Configuration',
+                                            items: [{ autogenerate: { directory: 'jsg/configuration' } }],
+                                        },
+                                        {
+                                            label: 'Stargates',
+                                            items: [{ autogenerate: { directory: 'jsg/stargates' } }],
+                                        },
+                                        {
+                                            label: 'Energy',
+                                            items: [{ autogenerate: { directory: 'jsg/energy' } }],
+                                        },
+                                        {
+                                            label: 'Machines',
+                                            items: [{ autogenerate: { directory: 'jsg/machines' } }],
+                                        },
+                                        {
+                                            label: 'Dimensions',
+                                            items: [{ autogenerate: { directory: 'jsg/dimensions' } }],
+                                        },
+                                        {
+                                            label: 'Mobs',
+                                            items: [{ autogenerate: { directory: 'jsg/mobs' } }],
+                                        },
+                                        {
+                                            label: 'CC: Tweaked',
+                                            items: [{ autogenerate: { directory: 'jsg/computercraft' } }],
+                                        },
+                                        {
+                                            label: 'OpenComputers II',
+                                            items: [{ autogenerate: { directory: 'jsg/opencomputers' } }],
+                                        },
+                                        {
+                                            label: 'Depending on JSG',
+                                            items: [{ autogenerate: { directory: 'jsg/depending' } }],
+                                        },
+                                        {
+                                            label: 'Compatibility',
+                                            items: [{ autogenerate: { directory: 'jsg/compatibility' } }],
+                                        },
+                                        {
+                                            label: 'Download',
+                                            items: [{ autogenerate: { directory: 'jsg/download' } }],
                                         }
                                     ],
                                 }
                             ],
+                        },
+                        {
+                            id: 'jsg-core',
+                            label: 'JSG: Core',
+                            link: '/jsg-core/',
+                            icon: "setting",
+                            items: [],
+                        },
+                        {
+                            id: 'jsg-rings',
+                            label: 'JSG: Rings and Transporters',
+                            link: '/jsg-rings/',
+                            icon: "bars",
+                            items: [],
+                        },
+                        {
+                            id: 'jsg-destiny',
+                            label: 'JSG: Destiny',
+                            link: '/jsg-destiny/',
+                            icon: "rocket",
+                            items: [],
+                        },
+                        {
+                            id: 'jsg-decor',
+                            label: 'JSG: Decor',
+                            link: '/jsg-decor/',
+                            icon: "puzzle",
+                            items: [],
+                        },
+                        {
+                            id: 'rsj',
+                            label: 'Redstone Jukeboxes',
+                            link: '/rsj/',
+                            icon: "puzzle",
+                            items: [],
                         },
                         {
                             id: 'jsg12',

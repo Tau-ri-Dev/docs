@@ -1,0 +1,44 @@
+#Should JSG check for update on startup?
+#Enables checking for updates to the mod when starting the game
+#SIDE: CLIENT
+"Check for updates" = true
+
+#Sets volume of JSG sounds
+# [deprecated]
+#SIDE: SERVER/CLIENT
+#Range: 0.0 ~ 3.0
+"JSG sounds volume" = 1.0
+
+#Specifies what unit will be used to display temperatures
+#SIDE: CLIENT
+#Allowed Values: KELVIN, CELSIUS, FAHRENHEITS
+"Temperature unit" = "CELSIUS"
+
+#Disables showing custom main menu
+#WARNING! - Requires reloading!
+#SIDE: CLIENT
+"Disable JSG main menu" = false
+
+#Gate type to be displayed in the main menu
+#SIDE: CLIENT
+#Allowed Values: MILKYWAY, UNIVERSE, PEGASUS, BY_ACT
+"Main menu gate type" = "BY_ACT"
+
+#Enables the startup Tau'ri Devs logo
+#WARNING! - Requires reloading!
+#SIDE: CLIENT
+"Enable Tau'ri logo on startup" = true
+
+#Enables debug mode
+#SIDE: CLIENT
+"Enable debug mode in main menu" = false
+
+#Enables stargate themed music in the main menu
+#SIDE: CLIENT
+"Play music in main menu" = true
+
+#Sets main menu music volume - can be changed later in GUI
+#SIDE: CLIENT
+#Range: 0.0 ~ 1.0
+"Main menu music volume" = 1.0
+

@@ -1,0 +1,35 @@
+---
+title: General Config
+slug: jsg/configuration/general
+description: General config file of JSG mod
+sidebar:
+  order: 0
+---
+import { Aside, Badge, Code } from '@astrojs/starlight/components';
+import generalConfig from '/src/inc/config/jsg/jsgConfig_2.0/General.toml?raw'
+import dhdConfig from '/src/inc/config/jsg/jsgConfig_2.0/DialHomeDevice.toml?raw'
+import sgConfig from '/src/inc/config/jsg/jsgConfig_2.0/Stargate.toml?raw'
+import computersConfig from '/src/inc/config/jsg/jsgConfig_2.0/ComputersIntegration.toml?raw' // removed since 6.0.0.0
+
+### Clientside
+Config files for the mod can be found within your minecraft profile under `/config/jsg/jsgConfig_2.0`<br/>
+When in single player, settings marked SERVER or CLIENT will be used. When playing on a server, only settings marked CLIENT will be used.
+
+### Serverside
+Config files for the mod can be found server root directory under `/config/jsg/jsgConfig_2.0`<br/>
+Only settings marked SERVER will be used
+
+## General.toml file
+This config file is responsible of holding options of general configurations.
+<Code code={generalConfig} lang="toml" title="General.toml" />
+
+## Stargate.toml file
+This config file cotains options to setup Stargates parameters.
+<Code code={sgConfig} lang="toml" title="Stargate.toml" />
+
+## ComputersIntegration.toml file
+<Aside type="caution" title="Removed since version 6.0.0.0">
+	This config file has been moved to the JSG: Core mod. See [JSG: Core/Configuration/General Config](/jsg-core/)
+</Aside>
+This config file cotains options to setup CC: Tweaked and OC2 integrations parameters.
+<Code code={computersConfig} lang="toml" title="ComputersIntegration.toml" />

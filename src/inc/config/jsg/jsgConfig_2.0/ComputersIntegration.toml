@@ -1,0 +1,5 @@
+#Defines wireless range of stargate for OC/CC
+#SIDE: SERVER
+#Range: 0 ~ 150
+"Stargate wireless range" = 20
+

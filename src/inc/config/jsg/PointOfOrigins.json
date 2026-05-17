@@ -1,0 +1,21 @@
+{
+  "jsg:stargate/pegasus": [
+    "jsg:default"
+  ],
+  "jsg:stargate/orlin": [],
+  "jsg:stargate/milkyway": [
+    "jsg:default",
+    "jsg:p7j989",
+    "jsg:nether",
+    "jsg:antarctica",
+    "jsg:abydos",
+    "jsg:tauri"
+  ],
+  "jsg:stargate/universe": [
+    "jsg:default"
+  ],
+  "jsg:stargate/movie": [
+    "jsg:default"
+  ],
+  "jsg:stargate/tollan": []
+}

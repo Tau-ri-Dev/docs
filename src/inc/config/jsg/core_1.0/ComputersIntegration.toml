@@ -1,0 +1,5 @@
+#Defines wireless range of devices for OC/CC
+#SIDE: SERVER
+#Range: 0 ~ 150
+"Devices wireless range" = 20
+
