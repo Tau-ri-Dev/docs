@@ -71,6 +71,10 @@ html {
 	navigation: auto;
 }
 
+.sl-markdown-content :is(th, td):not(:where(.not-content *)) {
+	vertical-align: middle !important;
+}
+
 /* Dark mode colors. */
 :root {
 	--sl-color-accent-low: #505050;

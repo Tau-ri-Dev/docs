@@ -76,7 +76,13 @@ export default defineConfig({
                                 },
                                 {
                                     label: 'Stargates',
-                                    items: [{ autogenerate: { directory: 'jsg/stargates' } }],
+                                    items: [
+                                        { autogenerate: { directory: 'jsg/stargates' } },
+                                        {
+                                            label: 'Glyphs',
+                                            items: [{ autogenerate: { directory: 'jsg/stargates_glyphs' } }],
+                                        }
+                                    ],
                                 },
                                 {
                                     label: 'Energy',
