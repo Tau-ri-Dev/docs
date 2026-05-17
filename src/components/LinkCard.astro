@@ -1,5 +1,5 @@
 ---
-import { Icon } from "@astrojs/starlight/components";
+import { Icon, Badge } from "@astrojs/starlight/components";
 import type { ComponentProps } from "astro/types";
 
 interface Props {
@@ -7,12 +7,16 @@ interface Props {
   title: string;
   href: string;
   destructive?: boolean;
+  outdated?: boolean;
 }
 
-const { icon, title, href, destructive } = Astro.props;
+const { icon, title, href, destructive, outdated } = Astro.props;
 ---
 
-<a href={href} class:list={["not-content", "card", destructive && "card-destructive"]}>
+<a
+  href={href}
+  class:list={["not-content", "card", destructive && "card-destructive"]}
+>
   <article class="sl-flex">
     <div class="title sl-flex">
       {icon && <Icon name={icon} class="icon" size="2em" />}
@@ -21,6 +25,7 @@ const { icon, title, href, destructive } = Astro.props;
     </div>
     <div class="body"><slot /></div>
   </article>
+  {outdated && <Badge text="Outdated" variant="default" />}
 </a>
 
 <style>
@@ -83,7 +88,11 @@ const { icon, title, href, destructive } = Astro.props;
   }
   .card .body {
     margin-top: 0.5rem;
-    font-size: clamp(var(--sl-text-sm), calc(0.5rem + 1vw), var(--sl-text-body));
+    font-size: clamp(
+      var(--sl-text-sm),
+      calc(0.5rem + 1vw),
+      var(--sl-text-body)
+    );
     color: var(--sl-color-gray-3);
     transition: color 0.3s ease;
   }

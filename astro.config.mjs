@@ -56,20 +56,23 @@ export default defineConfig({
                                     items: [
                                         {
                                             label: 'Getting started',
-                                            items: [{ autogenerate: { directory: 'jsg/1-20-x/getting-started' } }],
+                                            items: [{ autogenerate: { directory: 'jsg/getting-started' } }],
                                         }
                                     ],
-                                },
+                                }
+                            ],
+                        },
+                        {
+                            id: 'jsg12',
+                            label: 'JSG - 1.12.2',
+                            link: '/jsg12/',
+                            icon: "chevron",
+                            badge: { text: 'Outdated', variant: 'default' },
+                            items: [
+                                "jsg12",
                                 {
-                                    label: '1.12.2',
-                                    items: [
-                                        {
-                                            label: 'Getting started',
-                                            items: [
-                                                "jsg/1-12-2/getting-started/installation"
-                                            ],
-                                        }
-                                    ],
+                                    label: 'Getting started',
+                                    items: [{ autogenerate: { directory: 'jsg12/getting-started' } }]
                                 }
                             ],
                         },
