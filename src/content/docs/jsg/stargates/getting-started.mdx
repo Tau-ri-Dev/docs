@@ -1,0 +1,123 @@
+---
+title: Getting started with Stargates
+slug: jsg/stargates/getting-started
+description: How to construct and use stargates
+sidebar:
+  order: 0
+---
+import { Aside, Badge, Code } from '@astrojs/starlight/components';
+
+A stargate is a teleportation device created by the Ancients to allow them to easily and almost instantly travel not only within and 
+between the Galaxy, but even across the universe. Each gate has its own set of symbols for a given region (galaxy).
+
+<div style="width: 25dvw">
+![Stargate](/assets/jsg/stargates/gate_milkyway.webp)
+</div>
+
+Since there are no galaxies or distant planets in Minecraft, the above system is modified so that stargates can be used in the game. 
+Therefore, multiple stargates can be placed in 1 dimension and gates can also travel between dimensions. 
+More about traveling between dimensions in [Dimensional Groups](/).
+
+JSG adds stargates, DHDs and devices that were seen in the SG-1, SGA, SGU series and movies. 
+The mod focuses on faithfully handling the models and functional mechanics e.g. Entering the address on the DHD by pressing physical buttons.
+
+## Address system
+Almost every type of stargate has its own coordinate (address) system - symbols that the gate works with.<br/>
+The mod contains 3 types of address systems. All symbols including all information can be found in [Stargates/Glyphs section](/jsg/stargates/glyphs)
+
+### MilkyWay
+<center>**Example of symbols for this system:**</center>
+|  |  |  |  |  |  |  |  |
+|--|--|--|--|--|--|--|--|
+| ![](https://files.justsgmod.eu/crater.png_1672043492.png) | ![](https://files.justsgmod.eu/virgo.png_1672043499.png) | ![](https://files.justsgmod.eu/bootes.png_1672043492.png) | ![](https://files.justsgmod.eu/centaurus.png_1672043492.png) | ![](https://files.justsgmod.eu/libra.png_1672043493.png) | ![](https://files.justsgmod.eu/serpens_caput.png_1672043499.png) | ![](https://files.justsgmod.eu/norma.png_1672043495.png) | ![](https://files.justsgmod.eu/scorpius.png_1672043498.png) |
+
+Stargates types that work by using this system: MilkyWay, Movie, Tollan, Orlin's stargate
+
+### Pegasus
+<center>**Example of symbols for this system:**</center>
+|  |  |  |  |  |  |  |  |
+|--|--|--|--|--|--|--|--|
+| ![](https://files.justsgmod.eu/ca_po.png_1672055502.png) | ![](https://files.justsgmod.eu/laylox.png_1672055528.png) | ![](https://files.justsgmod.eu/ecrumig.png_1672055510.png) | ![](https://files.justsgmod.eu/avoniv.png_1672055493.png) | ![](https://files.justsgmod.eu/bydo.png_1672055499.png) | ![](https://files.justsgmod.eu/aaxel.png_1672055472.png) | ![](https://files.justsgmod.eu/aldeni.png_1672055482.png) | ![](https://files.justsgmod.eu/setas.png_1672055562.png) |
+
+Stargates types that work by using this system: Pegasus
+
+### Universe
+<center>**Example of symbols for this system:**</center>
+|  |  |  |  |  |  |  |  |
+|--|--|--|--|--|--|--|--|
+| ![](https://files.justsgmod.eu/g1.png_1672077872.png) | ![](https://files.justsgmod.eu/g2.png_1672077876.png) | ![](https://files.justsgmod.eu/g3.png_1672077880.png) | ![](https://files.justsgmod.eu/g4.png_1672077884.png) | ![](https://files.justsgmod.eu/g5.png_1672077888.png) | ![](https://files.justsgmod.eu/g6.png_1672077892.png) | ![](https://files.justsgmod.eu/g7.png_1672077896.png) | ![](https://files.justsgmod.eu/g8.png_1672077900.png) |
+
+Stargates types that work by using this system: Universe
+
+### Selecting the correct type of address system:
+Each stargate has these 3 types of addresses - these addresses are used to create a connection between stargates.<br/>
+The required address type must be selected according to the type of stargate from which the address will be entered.<br/>
+Therefore, it is not possible to create an outgoing connection from a Pegasus stargate using the MilkyWay or Universe address systems.
+
+### Stargate address assignment
+Each Stargate address is unique. There are several parameters used to create the address: The x,y,z coordinates and dimension in which the stargate base block is located.<br/>
+Since the address is bound according to the parameters listed above, the Stargate address can be preserved in several ways:
+- By breaking the old stargate and building a new one in its place
+- Changing Stargate address using [command](/jsg/getting-started/commands/#-sgsetaddress)
+
+Another welcome feature is that multiple stargates can be placed in one chunk
+
+### Address length
+Stargate addresses consist of 6, 7 or 8 symbols + Point of Origin *(PoO) (from here on will be listed with PoO included in the count)* 
+and its minimum length is affected by the following parameters:
+- Types of stargate address system that dials the address and destination stargate
+- Dimension / Dimension group containing stargate that enters the address and the destination stargate
+- PoO is always the last glyph in the address but may not always be displayed
+
+<center>**7 glyphs address:**</center>
+|  |  |  |  |  |  |  |
+|--|--|--|--|--|--|--|
+| ![](https://files.justsgmod.eu/crater.png_1672043492.png) | ![](https://files.justsgmod.eu/virgo.png_1672043499.png) | ![](https://files.justsgmod.eu/bootes.png_1672043492.png) | ![](https://files.justsgmod.eu/centaurus.png_1672043492.png) | ![](https://files.justsgmod.eu/libra.png_1672043493.png) | ![](https://files.justsgmod.eu/serpens_caput.png_1672043499.png) | ![](https://files.justsgmod.eu/origin_5.png_1672043496.png) |
+
+7 glyph addresses can be used under the following conditions:
+- Both stargates are located in the same dimension/dimension group and use the same address system
+- If the parameter `Need only 7 symbols between Uni gates`is enabled in the [stargate config][sg-config],
+ Universe gates can be dialed with 7 symbols regardless of the dimension / dimension group when using the Universe address system
+
+<center>**8 glyphs address:**</center>
+|  |  |  |  |  |  |  |  |
+|--|--|--|--|--|--|--|--|
+| ![](https://files.justsgmod.eu/crater.png_1672043492.png) | ![](https://files.justsgmod.eu/virgo.png_1672043499.png) | ![](https://files.justsgmod.eu/bootes.png_1672043492.png) | ![](https://files.justsgmod.eu/centaurus.png_1672043492.png) | ![](https://files.justsgmod.eu/libra.png_1672043493.png) | ![](https://files.justsgmod.eu/serpens_caput.png_1672043499.png) | ![](https://files.justsgmod.eu/norma.png_1672043495.png) | ![](https://files.justsgmod.eu/origin_5.png_1672043496.png) |
+
+8 glyph addresses are required under the following conditions:
+- Stargates that dial addresses using the MilkyWay address system when the destination stargate uses the Pegasus address system and vice versa
+- Both stargates use the same address system, but are located in different dimensions/dimension groups
+
+<center>**9 glyphs address:**</center>
+|  |  |  |  |  |  |  |  |  |
+|--|--|--|--|--|--|--|--|--|
+| ![](https://files.justsgmod.eu/crater.png_1672043492.png) | ![](https://files.justsgmod.eu/virgo.png_1672043499.png) | ![](https://files.justsgmod.eu/bootes.png_1672043492.png) | ![](https://files.justsgmod.eu/centaurus.png_1672043492.png) | ![](https://files.justsgmod.eu/libra.png_1672043493.png) | ![](https://files.justsgmod.eu/serpens_caput.png_1672043499.png) | ![](https://files.justsgmod.eu/norma.png_1672043495.png) | ![](https://files.justsgmod.eu/scorpius.png_1672043498.png) | ![](https://files.justsgmod.eu/origin_5.png_1672043496.png) |
+
+9 glyphs address *(full address)* is required under the following conditions:
+- Stargate that dials addresses using the MilkyWay address system where the destination stargate uses the Universe address system and vice versa
+- Stargate that dials address using the Pegasus address system where the destination stargate uses the Universe address system and vice versa
+
+<Aside type="note">
+More information about obtaining addresses and writing them down on notebook pages or in the Universe dialer can be found in the sections 
+[Orlin's gate](/jsg/stargates/orlin), 
+[Stargate](/jsg/stargates/stargate) and 
+[Cartouches](/jsg/getting-started/mechanics/#cartouches)
+</Aside>
+
+## Construction
+Stargates are multi-block structures that consist of a Base Block, Ring Blocks, and Chevron Blocks. The only exception is the Orlin's gate, which consists of only a Base Block and Member Blocks.
+
+After placing the Base block, stargate can be built in several ways:
+!- By placing the appropriate blocks in the correct position
+!- By clicking the appropriate blocks on the Base Block - blocks will automatically place themselves in the correct position
+
+The size, shape and number of blocks depend on the set gate size in [Stargate config][sg-config]
+|  |  |
+|--|--|
+| ![](/assets/jsg/stargates/builder_classic_all.webp) | ![](/assets/jsg/stargates/builder_orlin.webp) |
+| <center>Stargate building pattern - Small / Medium size</center> | <center>Stargate building pattern - Orlin's gate</center> |
+
+Once all the blocks have been placed, the multi-block structure will automatically connect to form a stargate. You will know this by blocks disappearing and a functional stargate being placed in their place.
+
+
+[sg-config]: /jsg/configuration/general/#stargatetoml-file

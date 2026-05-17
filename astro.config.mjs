@@ -16,6 +16,9 @@ export default defineConfig({
         starlight({
             favicon: '/assets/favicon.png',
             title: 'Tau\'ri Dev Docs',
+            editLink: {
+                baseUrl: 'https://github.com/Tau-ri-Dev/docs/edit/main/',
+            },
             logo: {
                 light: '/src/assets/tauri_logo_dark.webp',
                 dark: '/src/assets/tauri_logo.webp',
