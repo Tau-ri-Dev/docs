@@ -55,57 +55,61 @@ export default defineConfig({
                             items: [
                                 "jsg",
                                 {
-                                    label: '1.20.x',
+                                    label: 'Getting started',
+                                    items: [{ autogenerate: { directory: 'jsg/getting-started' } }],
+                                },
+                                {
+                                    label: 'Configuration',
+                                    items: [{ autogenerate: { directory: 'jsg/configuration' } }],
+                                },
+                                {
+                                    label: 'Data',
                                     items: [
                                         {
-                                            label: 'Getting started',
-                                            items: [{ autogenerate: { directory: 'jsg/getting-started' } }],
-                                        },
-                                        {
-                                            label: 'Configuration',
-                                            items: [{ autogenerate: { directory: 'jsg/configuration' } }],
-                                        },
-                                        {
-                                            label: 'Stargates',
-                                            items: [{ autogenerate: { directory: 'jsg/stargates' } }],
-                                        },
-                                        {
-                                            label: 'Energy',
-                                            items: [{ autogenerate: { directory: 'jsg/energy' } }],
-                                        },
-                                        {
-                                            label: 'Machines',
-                                            items: [{ autogenerate: { directory: 'jsg/machines' } }],
-                                        },
-                                        {
-                                            label: 'Dimensions',
-                                            items: [{ autogenerate: { directory: 'jsg/dimensions' } }],
-                                        },
-                                        {
-                                            label: 'Mobs',
-                                            items: [{ autogenerate: { directory: 'jsg/mobs' } }],
-                                        },
-                                        {
-                                            label: 'CC: Tweaked',
-                                            items: [{ autogenerate: { directory: 'jsg/computercraft' } }],
-                                        },
-                                        {
-                                            label: 'OpenComputers II',
-                                            items: [{ autogenerate: { directory: 'jsg/opencomputers' } }],
-                                        },
-                                        {
-                                            label: 'Depending on JSG',
-                                            items: [{ autogenerate: { directory: 'jsg/depending' } }],
-                                        },
-                                        {
-                                            label: 'Compatibility',
-                                            items: [{ autogenerate: { directory: 'jsg/compatibility' } }],
-                                        },
-                                        {
-                                            label: 'Download',
-                                            items: [{ autogenerate: { directory: 'jsg/download' } }],
+                                            label: 'Tags',
+                                            items: [{ autogenerate: { directory: 'jsg/data/tags' } }],
                                         }
                                     ],
+                                },
+                                {
+                                    label: 'Stargates',
+                                    items: [{ autogenerate: { directory: 'jsg/stargates' } }],
+                                },
+                                {
+                                    label: 'Energy',
+                                    items: [{ autogenerate: { directory: 'jsg/energy' } }],
+                                },
+                                {
+                                    label: 'Machines',
+                                    items: [{ autogenerate: { directory: 'jsg/machines' } }],
+                                },
+                                {
+                                    label: 'Dimensions',
+                                    items: [{ autogenerate: { directory: 'jsg/dimensions' } }],
+                                },
+                                {
+                                    label: 'Mobs',
+                                    items: [{ autogenerate: { directory: 'jsg/mobs' } }],
+                                },
+                                {
+                                    label: 'CC: Tweaked',
+                                    items: [{ autogenerate: { directory: 'jsg/computercraft' } }],
+                                },
+                                {
+                                    label: 'OpenComputers II',
+                                    items: [{ autogenerate: { directory: 'jsg/opencomputers' } }],
+                                },
+                                {
+                                    label: 'Depending on JSG',
+                                    items: [{ autogenerate: { directory: 'jsg/depending' } }],
+                                },
+                                {
+                                    label: 'Compatibility',
+                                    items: [{ autogenerate: { directory: 'jsg/compatibility' } }],
+                                },
+                                {
+                                    label: 'Download',
+                                    items: [{ autogenerate: { directory: 'jsg/download' } }],
                                 }
                             ],
                         },
