@@ -1,7 +1,6 @@
 ---
-import { Badge } from "@astrojs/starlight/components";
+import { Badge, Icon } from "@astrojs/starlight/components";
 import type { ComponentProps } from "astro/types";
-import { Icon } from 'astro-icon/components'
 
 const { topics } = Astro.locals.starlightSidebarTopics;
 const currentTopic = topics.find((topic) => topic.isCurrent);
@@ -17,6 +16,7 @@ const currentTopic = topics.find((topic) => topic.isCurrent);
         <div class="starlight-sidebar-topics-dropdown-button-icon">
           <Icon
             name={currentTopic.icon as ComponentProps<typeof Icon>["name"]}
+            size="2rem"
           />
         </div>
       )
@@ -129,7 +129,7 @@ const currentTopic = topics.find((topic) => topic.isCurrent);
     content: "";
     background-image: linear-gradient(
       var(--starlight-sidebar-topics-dropdown-gradient-direction),
-      var(--sl-color-text-accent) calc(1.4rem + 16px + 2px),
+      var(--sl-color-accent) calc(2rem + 16px + 2px),
       var(--sl-color-gray-5) 0
     );
   }
@@ -139,7 +139,7 @@ const currentTopic = topics.find((topic) => topic.isCurrent);
   ) {
     background: linear-gradient(
       var(--starlight-sidebar-topics-dropdown-gradient-direction),
-      var(--sl-color-text-accent) calc(1.4rem + 16px),
+      var(--sl-color-accent) calc(2rem + 16px),
       var(--sl-color-gray-6) 0
     );
   }
@@ -150,7 +150,9 @@ const currentTopic = topics.find((topic) => topic.isCurrent);
     display: flex;
     justify-content: center;
     padding: 0.2rem;
-    background-color: var(--sl-color-text-accent);
+    padding-left: 0;
+    padding-right: 0;
+    /*background-color: var(--sl-color-accent);*/
     color: var(--sl-color-text-invert);
   }
 
@@ -167,7 +169,7 @@ const currentTopic = topics.find((topic) => topic.isCurrent);
     )
     .starlight-sidebar-topics-dropdown-button-label {
     font-weight: 600;
-    margin-inline-start: 1rem;
+    margin-inline-start: 1.3rem;
   }
 
   .starlight-sidebar-topics-dropdown-label {
@@ -232,8 +234,8 @@ const currentTopic = topics.find((topic) => topic.isCurrent);
       :focus-visible
     )
     .starlight-sidebar-topics-dropdown-icon {
-    background-color: var(--sl-color-text-accent);
-    border-color: var(--sl-color-text-accent);
+    background-color: var(--sl-color-accent);
+    border-color: var(--sl-color-accent);
     color: var(--sl-color-text-invert);
   }
 
@@ -242,8 +244,8 @@ const currentTopic = topics.find((topic) => topic.isCurrent);
       .starlight-sidebar-topics-dropdown-current-item
     )
     .starlight-sidebar-topics-dropdown-icon {
-    background-color: var(--sl-color-text-accent);
-    border-color: var(--sl-color-text-accent);
+    background-color: var(--sl-color-accent);
+    border-color: var(--sl-color-accent);
     color: var(--sl-color-text-invert);
   }
 

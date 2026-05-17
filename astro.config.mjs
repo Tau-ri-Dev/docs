@@ -2,7 +2,6 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import starlightSidebarTopics from "starlight-sidebar-topics";
-import icon from 'astro-icon';
 
 // https://astro.build/config
 export default defineConfig({
@@ -57,7 +56,6 @@ export default defineConfig({
                     }
                 )
             ]
-        }),
-        icon()
+        })
     ]
 });
