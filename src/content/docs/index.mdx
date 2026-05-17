@@ -12,6 +12,7 @@ hero:
 
 import { Card, CardGrid, Icon } from '@astrojs/starlight/components';
 import LinkCard from "/src/components/LinkCard.astro";
+import JSGAddons from "/src/components/JSGAddons.astro";
 
 ## Just Stargate Mod
 <CardGrid>
@@ -24,21 +25,11 @@ import LinkCard from "/src/components/LinkCard.astro";
 </CardGrid>
 
 #### Addons
-<CardGrid>
-	<LinkCard title="JSG: Rings and Transporters" href="/jsg_rings" icon="folia">
-		A mod originated from the famous TV series Stargate...
-	</LinkCard>
-	<LinkCard title="JSG: Destiny" href="/jsg_destiny" icon="folia">
-		A mod originated from the famous TV series Stargate...
-	</LinkCard>
-	<LinkCard title="JSG: Decor" href="/jsg_decor" icon="folia">
-		A mod originated from the famous TV series Stargate...
-	</LinkCard>
-</CardGrid>
+<JSGAddons/>
 
 ## Other projects
 <CardGrid>
-	<LinkCard title="Redstone Jukeboxes" href="/rsj" icon="folia">
+	<LinkCard title="Redstone Jukeboxes" href="/rsj" icon="document">
 		Documentation of the most immersive Stargate mod for Minecraft
 	</LinkCard>
 </CardGrid>

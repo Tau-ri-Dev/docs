@@ -1,0 +1,92 @@
+---
+title: Commands
+slug: jsg/1-20-x/getting-started/commands
+description: JSG commands for admins
+sidebar:
+  order: 1
+---
+import { Aside, Badge } from '@astrojs/starlight/components';
+
+
+All commands must contain the prefix: `/jsg`<br/>
+Commands marked as <Badge text="Developer's command" variant="danger" /> are designed for developers only, and should be used with respect to this fact.
+
+### Parameter types
+- `<parameter>` have no values. These parameters must be specified: `/jsg command parameter`
+- `<parameter= >` must be specified: `parameter=value`
+- `Parameters` in square brackets - `[]` are optional. All parameters in the same set of `[]` must always be filled in.
+---
+## > Help
+The command lists all available commands in the current version of JSG.<br/>
+If the player hovers over a given command, help for the specific command will be displayed
+
+**Command format:** `/jsg help [page]`<br/>
+**Permission level:** 0<br/>
+
+| Parameter   | Type | Description                                                 | Values             |
+|-------------|------|-------------------------------------------------------------|--------------------|
+| `page`      | int  | Determines the page of the help information to be displayed | Any int number |
+
+## > Buildgate
+Spawns a stargate at the location the player is looking at. The type of stargate is specified by the `<type>` parameter.<br/>
+If the player is looking up - the stargate will spawn at the player's position (behind the player).
+
+**Command format:** `/jsg buildgate <type>`<br/>
+**Aliases:** `billgates`<br/>
+**Permission level:** 2<br/>
+
+| Parameter   | Type                                                                                                                                          | Description                 | Values                |
+|-------------|-----------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------|-----------------------|
+| `type`      | [JSG Stargate Type](https://github.com/Tau-ri-Dev/Mod-JSG-1.20.x/blob/main/src/main/java/dev/tauri/jsg/api/stargate/type/StargateTypes.java)  | Specifies the stargate type | Any stargate type |
+
+## > RIG
+Creates an incoming wormhole and spawns entities at the specified stargate.<br/>
+If the player does not fill in the parameters [x y z dim], the nearest gate within a radius of 0 blocks will be activated.
+
+**Command format:** `/jsg rig [<x> <y> <z> dim] [waveName] [opensIris]`<br/>
+**Permission level:** 2<br/>
+
+| Parameter   | Type             | Description                                                    | Values               |
+|-------------|------------------|----------------------------------------------------------------|----------------------|
+| `x y z`     | BlockPos         | Specifies the position of stargate in the world                | Valid blockpos       |
+| `dim`       | Dimension        | Specifies the dimension to the given coordinates x y z         | Valid dimensions     |
+| `waveName`  | String           | Specifies the RIG wave                                         | Any loaded wave name |
+| `opensIris` | boolean          | The value indicates whether the given wave will open the Iris. | `true \| false`      |
+
+## > SGSetAddress
+Command changes the address of the target stargate according to the parameters specified by the command.<br/>
+If the parameters [x y z] are not filled in, the address can be changed by looking at the base block of the stargate for which the address change is requested..
+
+**Command format:** `/jsg sgsetaddress [<x> <y> <z>] <map> <glyphID>x8`<br/>
+**Permission level:** 2<br/>
+
+| Parameter   | Type                        | Description                                                    | Values               |
+|-------------|-----------------------------|----------------------------------------------------------------|----------------------|
+| `x y z`     | BlockPos                    | Specifies the position of stargate in the world                | Valid blockpos       |
+| `map`       | JSG:Core Symbol Type        | Specifies a changing address map                               | Valid symbol type    |
+| `glyphID`x8 | String \| int               | 8x name of symbols from selected map 	                         | 8x Valid symbol      |
+
+## > Prepare <Badge text="Developer's command" variant="danger" />
+<Aside type="caution">This command is designed for developers!<br/>If you break your world because of this command, don't ask for help after that.</Aside>
+
+A developer command to prepare stargates for use in structures.<br/>
+Changes made by this command are not visible after it is executed.<br/>
+This command is useless for the average user in the public version!<br/>
+
+**Advanced users should only use this command when creating custom structures that contain stargates!**
+
+**Command format:** `/jsg prepare [<x> <y> <z>]`<br/>
+**Permission level:** 2<br/>
+
+| Parameter   | Type                        | Description                                                    | Values               |
+|-------------|-----------------------------|----------------------------------------------------------------|----------------------|
+| `x y z`     | BlockPos                    | Specifies the position of stargate in the world                | Valid blockpos       |
+
+## > Test <Badge text="Developer's command" variant="danger" />
+<Aside>This command has no effect in production version of the mod!</Aside>
+
+Developer command for manipulating model offset render<br/>
+This command is useless for the average user in the public version!
+
+**Command format:** `/jsg test <x> <y> <z> <size> <rotX> <rotY> <rotZ>`<br/>
+**Permission level:** 2<br/>

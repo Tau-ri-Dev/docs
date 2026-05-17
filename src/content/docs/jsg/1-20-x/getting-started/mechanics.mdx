@@ -1,0 +1,63 @@
+---
+title: Special and Survival game mechanics
+slug: jsg/1-20-x/getting-started/mechanics
+description: JSG Special and Survival game mechanics
+sidebar:
+  order: 2
+---
+import { Aside, Badge, Steps } from '@astrojs/starlight/components';
+
+<Aside>This section of the documentation is dedicated to experimental features that may or may not work properly, are not yet published in the mod (Work In Progress), or may be removed from the mod!</Aside>
+
+This section of documentation deals with Special and Survival mechanics that cannot be classified into other categories.
+
+## Crystals
+Stargate technology is based on crystal technology. Therefore, in addition to basic materials such as iron, copper, redstone, naquadah, you will also need crystals. These crystals can be obtained in several ways:
+
+- By finding and mining a geode that contains crystal buds, clusters, crystal blocks, and budding blocks
+- By finding a free-standing budding block on which buds and clusters grow
+- By growing crystals using budding blocks
+
+<center>
+### All stages of crystal growth
+</center>
+|                                                            |                                                              |                                                            |                                                                |
+|------------------------------------------------------------|--------------------------------------------------------------|------------------------------------------------------------|----------------------------------------------------------------|
+| ![Small Bud](/src/assets/jsg/crystals/bud_small_blue.webp) | ![Medium Bud](/src/assets/jsg/crystals/bud_medium_blue.webp) | ![Large Bud](/src/assets/jsg/crystals/bud_large_blue.webp) | ![Crystal Cluster](/src/assets/jsg/crystals/cluster_blue.webp) |
+| <center>Small Bud</center>                                 | <center>Medium Bud</center>                                  | <center>Large Bud</center>                                 | <center>Crystal Cluster</center>                               |
+
+You can obtain a random number and size of crystals after mining certain crystal development stages:
+
+- Small Bud: 1x small crystal
+- Medium Bud: 1-2x small crystal 
+- Large Bud: 0-1x crystal, 2x small crystal
+- Crystal Cluster: 1x crystal, 2-3x small crystal
+
+The resulting number of dropped crystals can be increased if you use a pickaxe with the Fortune enchantment!
+You can also get these development stages if you use a pickaxe with the Silk Touch enchantment!
+
+<center>
+### All crystal types
+</center>
+|                                                               |                                                               |                                                                   |                                                           |                                                                 |                                                               |
+|---------------------------------------------------------------|---------------------------------------------------------------|-------------------------------------------------------------------|-----------------------------------------------------------|-----------------------------------------------------------------|---------------------------------------------------------------|
+| ![Blue Crystal](/src/assets/jsg/crystals/cluster_blue.webp)   | ![Ender Crystal](/src/assets/jsg/crystals/cluster_ender.webp) | ![Pegasus Crystal](/src/assets/jsg/crystals/cluster_pegasus.webp) | ![Red Crystal](/src/assets/jsg/crystals/cluster_red.webp) | ![Yellow Crystal](/src/assets/jsg/crystals/cluster_yellow.webp) | ![White Crystal](/src/assets/jsg/crystals/cluster_white.webp) |
+| <center>Blue Crystal</center>                                 | <center>Ender Crystal</center>                                | <center>Pegasus Crystal</center>                                  | <center>Red Crystal</center>                              | <center>Yellow Crystal</center>                                 | <center>White Crystal</center>                                |
+
+Each type of crystal listed above generates in a specific set of biomes. Each set has its own biome tag:
+- Blue crystal: `#has_crystals_blue`
+- Ender crystal: `#has_crystals_ender`
+- Pegasus crystal: `#has_crystals_pegasus`
+- Red crystal: `#has_crystals_red`
+- Yellow crystal: `#has_crystals_yellow`
+- White crystal: `#has_crystals_white`
+
+Biomes specified in these tags by default can be found at: [Configuration/tags](/jsg/1-20-x/configuration/tags/#biome-tags)
+## Budding blocks
+Unlike Amethyst budding blocks, which do not drop anything when mined, JSG budding blocks drop crystal seeds and a 50% chance of basic material 
+(the block from which the crystal seed crystallised and transformed into a budding block).
+
+
+## Ancient language
+## Cauldron recipes
+## Cartouches
