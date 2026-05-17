@@ -14,7 +14,7 @@ export default defineConfig({
     },
     integrations: [
         starlight({
-            favicon: '/src/assets/favicon.png',
+            favicon: '/favicon.png',
             title: 'Tau\'ri Dev Docs',
             logo: {
                 light: '/src/assets/tauri_logo_dark.webp',
