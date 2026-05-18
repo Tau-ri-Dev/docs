@@ -32,7 +32,7 @@ html {
 
 .sl-markdown-content img:not(:where(.not-content *)):not([alt="Diagram"]) {
 	width: 100%;
-}	
+}
 
 .sl-markdown-content :is(img.img-inline, .img-inline img) {
 	margin: 0;
@@ -73,6 +73,10 @@ html {
 
 .sl-markdown-content :is(th, td):not(:where(.not-content *)) {
 	vertical-align: middle !important;
+}
+
+starlight-menu-button button {
+	background-color: var(--sl-colo-gray-4);
 }
 
 /* Dark mode colors. */

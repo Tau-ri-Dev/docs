@@ -5,6 +5,43 @@ description: Protect your gate with iris or shield!
 sidebar:
   order: 6
 ---
+import RevisionNeeded from '/src/components/RevisionNeeded.astro'
 import { Aside, Badge, Code } from '@astrojs/starlight/components';
 
-lorem
+Iris and Shield is a protective barrier that is installed on a stargate. This protective barrier is installed in the stargate in a predefined slot. 
+This barrier serves to defend against raiders over servers or against aggressive and friendly mobs that pass through the stargate through the Random Incoming Generator aka RIG.
+
+## Variants
+The iris is a mechanical protection for the stargate and is available in several tiers according to durability. 
+Each iris is gradually worn out not only mechanically but also thermally, and once its maximum wear occurs - the durability drops to 0, it is destroyed.
+
+|  |  |  |  |
+|--|--|--|--|
+| <center>![Titanium Iris](/assets/jsg/iris/iris_t1.webp)</center> | <center>![Trinium Iris](/assets/jsg/iris/iris_t2.webp)</center> | <center>![Creative Iris](/assets/jsg/iris/iris_t3.webp)</center> | <center>![Shield](/assets/jsg/iris/shield.webp)</center> |
+| <center>Titanium Iris</center> | <center>Trinium Iris</center> | <center>Creative Iris</center> | <center>Shield</center> |
+
+Advanced variant of the iris is a shield that has no durability. 
+The shield needs energy to operate, every time something hits the shield, it consumes energy and there is a fluctuation in energy. 
+If the shield is heated, there is a higher energy consumption. 
+The shield cannot be physically destroyed, but it can be broken through by the gate running out of energy and the shield collapsing.
+
+## Operating modes
+<RevisionNeeded />
+Defensive barriers can be operated at several points of operation:
+
+|  |  |  |  |  |
+|--|--|--|--|--|
+| <center>![](/assets/jsg/iris/mod_open.webp)</center> | <center>![](/assets/jsg/iris/mod_closed.webp)</center> | <center>![](/assets/jsg/iris/mod_automatic.webp)</center> | <center>![](/assets/jsg/iris/mod_computer.webp)</center> | <center>![](/assets/jsg/iris/mod_dialer.webp)</center> |
+| <center>Open</center> | <center>Closed</center> | <center>Automatic</center> | <center>Computer</center> | <center>Dialer</center> |
+
+- `Open` - Defense barrier is permanently open
+- `Closed` - Defense barrier is permanently closed
+- `Automatic` - Defense barrier automatically closes upon incoming wormhole and can be opened by entering code using GDO
+- `Computer` - Defensive barrier is controlled by computers from [ComputerCraft] or [OpenComputers] mods
+- `Dialer` - Defense barrier can be controlled using universe dialer
+
+## Garage Door Opener (GDO)
+Garage Door Opener aka GDO *(or Iris Opener)* is used as the primary method to send the IDC - identification code and thus open the iris defense barrier.
+<center><div style="max-width: 500px">![](https://files.justsgmod.eu/GDO.png_1671446417.png)</div></center>
+### Operation of GDO
+To send IDC, simply select the GDO in active slot in inventory and click right mouse button. At this point, is possible to enter IDC using the numeric keypad (0 - 9) to send entered code press Enter key. To cancel entry mode can be done by pressing Esc key.
