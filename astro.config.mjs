@@ -132,16 +132,16 @@ export default defineConfig({
                                     items: [{ autogenerate: { directory: 'jsg/opencomputers' } }],
                                 },
                                 {
-                                    label: 'Depending on JSG',
-                                    items: [{ autogenerate: { directory: 'jsg/depending' } }],
-                                },
-                                {
                                     label: 'Compatibility',
                                     items: [{ autogenerate: { directory: 'jsg/compatibility' } }],
                                 },
                                 {
                                     label: 'Download',
                                     items: [{ autogenerate: { directory: 'jsg/download' } }],
+                                },
+                                {
+                                    label: 'For Developers',
+                                    items: [{ autogenerate: { directory: 'jsg/for-developers' } }],
                                 }
                             ],
                         },
@@ -152,8 +152,20 @@ export default defineConfig({
                             icon: "setting",
                             items: [
                                 {
+                                    label: 'Standalone Core',
+                                    link: "/jsg-core/standalone/",
+                                },
+                                {
                                     label: 'Configuration',
                                     items: [{ autogenerate: { directory: 'jsg-core/configuration' } }],
+                                },
+                                {
+                                    label: 'For Developers',
+                                    items: [
+                                        { label: "Overview", slug: "jsg-core/for-developers" },
+                                        { label: "Getting started", items: [{ autogenerate: { directory: 'jsg-core/for-developers/getting-started' } }] },
+                                        { label: "Helpers", items: [{ autogenerate: { directory: 'jsg-core/for-developers/helpers' } }] }
+                                    ],
                                 }
                             ],
                         },

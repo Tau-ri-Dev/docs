@@ -1,0 +1,87 @@
+---
+title: "Set up your IDE"
+slug: "jsg-core/for-developers/getting-started/setup"
+description: "Step-by-step instructions on how to set up a development environment."
+sidebar:
+  order: 0
+---
+import { FileTree, Tabs, TabItem, Steps } from "@astrojs/starlight/components";
+
+As the Tau'ri Dev team primarily uses [IntelliJ IDEA](https://www.jetbrains.com/idea/), this guide will be focused on that IDE.
+However, the steps below should apply to other IDEs as well, with some minor changes.
+
+## Adding JSG: Core as a dependency
+
+<Steps>
+1. Download JSG: Core jar file from CurseForge or Modrinth
+2. Put it inside `<your project root>/libs/jsg-core-MINECRAFT_VERSION-CORE_VERSION.jar`
+	<FileTree>
+	- libs/
+		- **jsg-core-MINECRAFT_VERSION-CORE_VERSION.jar**
+	- src/
+	- build.gradle
+	- gradle.properties
+	- setting.gradle
+	- ...
+	</FileTree>
+3. Update your `build.gradle` as shown:
+	<FileTree>
+	- libs/
+		- jsg-core-MINECRAFT_VERSION-CORE_VERSION.jar
+	- src/
+	- **build.gradle**
+	- gradle.properties
+	- setting.gradle
+	- ...
+	</FileTree>
+	```kotlin adlew title="build.gradle"
+	minecraft {
+		// some minecraft stuff...
+		runs {
+			// more minecraft stuff...
+			data {
+				// another minecraft stuff...
+				// look for this:
+				args '--mod', mod_id, '--all',
+						'--output', file('src/generated/resources/'),
+						'--existing', file('src/main/resources/'),
+						'--existing-mod', "jsg_core" // <---- Add this line!!!
+			}	
+		}
+	}
+
+	repositories {
+		flatDir {
+			dir rootDir.getAbsolutePath() + "/libs" // <---- Add this line!!!
+		}
+	}
+
+	dependencies {
+		// replace MINECRAFT_VERSION with your minecraft version (1.20.1 for example)
+		// replace CORE_VERSION with proper core version (1.0.0.0 for example)
+		implementation fg.deobf("dev.tauri:jsg-core-MINECRAFT_VERSION:CORE_VERSION") // <---- Add this line!!!
+	}
+	```
+4. Update mods.toml
+	<FileTree>
+	- libs/
+		- jsg-core-MINECRAFT_VERSION-CORE_VERSION.jar
+	- src/main/resources/META-INF/
+		- **mods.toml**
+	- build.gradle
+	- gradle.properties
+	- setting.gradle
+	- ...
+	</FileTree>
+	```toml title="mods.toml"
+	# replace CORE_VERSION_RANGE with proper core version range
+	# ADD THIS BLOCK
+	[[dependencies.${mod_id}]]
+		modId="jsg_core"
+		mandatory=true
+		versionRange="CORE_VERSION_RANGE"
+		ordering="NONE"
+   		side="BOTH"
+	```
+5. Reload your gradle project
+</Steps>

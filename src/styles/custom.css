@@ -75,6 +75,10 @@ html {
 	vertical-align: middle !important;
 }
 
+.sl-link-button.primary {
+	--sl-icon-color: var(--sl-color-black);
+}
+
 starlight-menu-button button {
 	background-color: var(--sl-colo-gray-4);
 }

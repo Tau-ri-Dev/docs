@@ -1,0 +1,133 @@
+---
+title: "Registry helper"
+slug: "jsg-core/for-developers/helpers/registry-helper"
+description: "Using the registry helper class"
+sidebar:
+  order: 0
+---
+import { FileTree, Steps } from "@astrojs/starlight/components";
+
+Registry helper is a class that is responsible of holding registries and helping developer handle some of the registrations (Menu types for example).
+
+<Steps>
+1. Create class `ModRegistriesInit.java` *(in package `registry`)*
+	<FileTree>
+	- libs/
+	- src/main/java/your/namespace/your_mod_id/
+		- common/
+			- registry/
+				- **ModRegistriesInit.java**
+		- ExampleMod.java
+	- ...
+	</FileTree>
+	```java title="ModRegistriesInit.java"
+	import dev.tauri.jsg.core.common.registry.helper.RegistryHelper;
+	import net.minecraftforge.eventbus.api.IEventBus;
+
+	public class ModRegistriesInit {
+		// create a constant object of the RegistryHelper
+		public static final RegistryHelper REGISTRY_HELPER = new RegistryHelper("your_mod_id");
+
+		// declare init method
+		public static void init() {
+			// we will be putting stuff here...
+		}
+
+		// and register method
+		public static void register(IEventBus bus) {
+			REGISTRY_HELPER.register(bus); // IMPORTANT!
+		}
+	}
+	```
+2. Inside your main class update the constructor:
+	<FileTree>
+	- libs/
+	- src/main/java/your/namespace/your_mod_id/
+		- common/
+			- registry/
+				- ModRegistriesInit.java
+		- **ExampleMod.java**
+	- ...
+	</FileTree>
+	```java title="ExampleMod.java"
+	@Mod("your_mod_id")
+	public class ExampleMod implements JSGAddon {
+		public ExampleMod(){
+			// ...
+			ModRegistriesInit.init(); // inicialize the registries (load all constants etc.)
+
+			// ...some other registrations and stuff
+
+			// if you don't have already one, get the IEventBus
+			IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
+
+ 			// IMPORTANT!
+			ModRegistriesInit.register(eventBus); // register the registries
+			// ...
+		}
+	}
+	```
+3. Now you have set up a registry helper for your mod!
+</Steps>
+
+## Registering an item
+
+<Steps>
+1. Create class `ModItems.java`
+	<FileTree>
+	- libs/
+	- src/main/java/your/namespace/your_mod_id/
+		- common/
+			- registry/
+				- **ModItems.java**
+				- ModRegistriesInit.java
+		- ExampleMod.java
+	- ...
+	</FileTree>
+	```java title="ModItems.java"
+	import dev.tauri.jsg.core.common.item.JSGItem;
+	import dev.tauri.jsg.core.common.registry.helper.builder.item.ItemRegistryHelperGeneric;
+	import net.minecraftforge.registries.RegistryObject;
+	import dev.tauri.jsg.core.common.registry.CoreTabs; // only needed when using CoreTabs
+
+	public class ModItems {
+		// create item registry helper
+		public static final ItemRegistryHelperGeneric ITEM_HELPER = new ItemRegistryHelperGeneric(ModRegistriesInit.REGISTRY_HELPER::item);
+
+
+		// register your item
+		public static final RegistryObject<JSGItem> MY_AWESOME_ITEM = ITEM_HELPER.builder("my_awesome_item").buildGeneric();
+		// register more items...
+		public static final RegistryObject<JSGItem> ANOTHER_COOL_ITEM = ITEM_HELPER.builder("another_cool_item").buildGeneric();
+		// item without generic tooltip
+		public static final RegistryObject<JSGItem> ITEM_WITHOUT_TOOLTIP = ITEM_HELPER.builder("item_without_tooltip").clearTooltip().buildGeneric();
+		// item inside core tab
+		public static final RegistryObject<JSGItem> ITEM_IN_TAB = ITEM_HELPER.builder("item_in_tab").setInTabs(List.of(CoreTabs.TAB_RESOURCES)).buildGeneric();
+
+
+		// this method will be called from the init() in ModRegistriesInit.java
+		public static void init() {}
+	}
+	```
+2. Update your `ModRegistriesInit.java`
+	<FileTree>
+	- libs/
+	- src/main/java/your/namespace/your_mod_id/
+		- common/
+			- registry/
+				- ModItems.java
+				- **ModRegistriesInit.java**
+		- ExampleMod.java
+	- ...
+	</FileTree>
+	```java title="ModRegistriesInit.java"
+	public class ModRegistriesInit {
+		// ...
+		public static void init() {
+			// ...
+			ModItems.init(); // init the mod items
+		}
+		// ...
+	}
+	```
+</Steps>

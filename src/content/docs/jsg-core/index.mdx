@@ -3,20 +3,19 @@ title: Overview
 slug: jsg-core
 description: "JSG: Core documentation"
 ---
-JSG: Core contains utilities and core stuff to run all other JSG addons on it.
-
-## Expanding JSG
-JSG can be expanded with official add-ons. 
-Currently available are add-ons introducing content from Stargate Universe, decorative blocks, and Transport Rings. 
-The Transport Rings have undergone significant improvements, making them a truly viable short-range teleportation system.
-
 import { CardGrid } from '@astrojs/starlight/components';
 import JSGAddons from "/src/components/JSGAddons.astro";
 import LinkCard from "/src/components/LinkCard.astro";
 
+JSG: Core contains utilities and core stuff to run all other JSG addons on it.
+
+## What do you want from JSG: Core?
+
 <CardGrid>
-	<LinkCard title="Just Stargate Mod" href="/jsg" icon="chevron">
-		A mod originated from the famous TV series Stargate...
+	<LinkCard title="Play minecraft" href="/jsg-core/standalone" icon="puzzle">
+		I want to modify minecraft with this mod and possibly use it with other addons!
+	</LinkCard>
+	<LinkCard title="Build something on top of it" href="/jsg-core/for-developers" icon="rocket">
+		I want to use JSG: Core as a dependency for my project and hook other addons!
 	</LinkCard>
 </CardGrid>
-<JSGAddons/>

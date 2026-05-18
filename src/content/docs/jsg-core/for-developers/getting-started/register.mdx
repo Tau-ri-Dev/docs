@@ -1,0 +1,53 @@
+---
+title: "Register your mod"
+slug: "jsg-core/for-developers/getting-started/register-your-mod"
+description: "How to register your mod to JSG: Core"
+sidebar:
+  order: 1
+---
+import { FileTree, Tabs, TabItem, Steps } from "@astrojs/starlight/components";
+
+Modify your main mod class
+
+<FileTree>
+- libs/
+- src/main/java/your/namespace/your_mod_id/
+	- **ExampleMod.java**
+- build.gradle
+- gradle.properties
+- setting.gradle
+- ...
+</FileTree>
+```java title="ExampleMod.java"
+import dev.tauri.jsg.core.JSGAddon;
+import dev.tauri.jsg.core.JSGAddons;
+
+@Mod("your_mod_id")
+public class ExampleMod implements JSGAddon { // <--- must implement JSGAddon
+	public ExampleMod(){
+		// ...
+		JSGAddons.registerAddon(this);
+	}
+
+	@Override
+	public String getName() {
+		return "your mod name";
+	}
+
+	@Override
+	public String getId() {
+		return "your_mod_id";
+	}
+
+	@Override
+	public String getVersion() {
+		return "your mod version";
+	}
+
+	// --- OPTIONAL ---
+	@Override
+	public void onJSGCoreLoad() {
+		// do stuff
+	}
+}
+```
