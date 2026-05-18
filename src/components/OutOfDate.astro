@@ -1,0 +1,14 @@
+---
+interface Props {
+	since: string;
+}
+
+const { since } = Astro.props;
+import { Aside } from "@astrojs/starlight/components";
+---
+
+<Aside type="caution" title="Content is out of date!">
+	This part of the documentation is not up-to date since <span
+		set:html={since}
+	/> and needs a revision!
+</Aside>

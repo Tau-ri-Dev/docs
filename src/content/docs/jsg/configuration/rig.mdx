@@ -5,13 +5,12 @@ description: RIG config file of JSG mod
 sidebar:
   order: 1
 ---
+import RevisionNeeded from '/src/components/RevisionNeeded.astro'
 import { Aside, Badge, Code } from '@astrojs/starlight/components';
 import rigConfigOld from '/src/inc/config/jsg/stargateRIGConfig_1.1.json?raw'
 import rigConfigStructure from '/src/inc/config/jsg/stargateRIGConfigStructure.json?raw'
 
-<Aside type="caution" title="This documentation is out of date!">
-	This page needs revision, because it's not matching current mod state in the game.
-</Aside>
+<RevisionNeeded />
 <Aside type="note" title="Moved to datapacks since version 6.0.0.0">
 	This config file has been deleted and replaced with datapack entries. See datapack category
 </Aside>

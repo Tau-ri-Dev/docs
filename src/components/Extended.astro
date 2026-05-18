@@ -1,0 +1,13 @@
+---
+interface Props {
+	parent: string;
+}
+
+const { parent } = Astro.props;
+import { Aside } from "@astrojs/starlight/components";
+---
+
+<Aside type="note" title="Extended documentation!">
+This documentation is extending other documentation found at<br/>
+<a href={parent}>{parent}</a>
+</Aside>

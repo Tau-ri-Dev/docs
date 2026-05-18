@@ -5,16 +5,9 @@ description: Dimensions config file of JSG mod
 sidebar:
   order: 2
 ---
+import Extended from '/src/components/Extended.astro'
+import RevisionNeeded from '/src/components/RevisionNeeded.astro'
 import { Aside, Badge, Code } from '@astrojs/starlight/components';
 
-
-<Aside type="danger" title="Revision needed!">
-This part of the documentation needs a revision!
-</Aside>
-
-
-
-<Aside type="note" title="Extended documentation!">
-This documentation is extending other documentation found at<br/>
-[/jsg-core/configuration/dimensions/](/jsg-core/configuration/dimensions/)
-</Aside>
+<RevisionNeeded />
+<Extended parent="/jsg-core/configuration/dimensions/" />

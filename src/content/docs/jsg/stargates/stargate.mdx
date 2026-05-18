@@ -5,7 +5,7 @@ description: Stargate variants, construction and more
 sidebar:
   order: 2
 ---
-import { Aside, Badge, Code } from '@astrojs/starlight/components';
+import OutOfDate from '/src/components/OutOfDate.astro'
 
 Mod contains 5 variants of stargates. 
 However, this does not mean that each stargate has its own unique address system. 
@@ -111,9 +111,7 @@ This upgrade adds defensive capabilities to the stargate. More about this upgrad
 This upgrade affects the appearance of Stargate. More about this upgrade can be found in the next section of this documentation
 
 ## Biome overlays
-<Aside type="caution" title="Content is out of date!">
-This part of the documentation is not up-to date with the JSG version 6.0.0.0 and needs a revision!
-</Aside>
+<OutOfDate since="JSG version 6.0.0.0"/>
 
 Stargates change their appearance depending on the biome they are in. This change in appearance depending on the location is called Biome Overlay. 
 This overlay is assigned automatically according to the parameters set in [biome overlay tags](/jsg/data/tags/biome-overlay/). However, overlay can also be overridden - in the GUI it is located on the right side of the biome overlay tab. 
