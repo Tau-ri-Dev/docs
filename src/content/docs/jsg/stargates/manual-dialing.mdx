@@ -5,6 +5,33 @@ description: How to dial stargate manually
 sidebar:
   order: 5
 ---
+import SeeAlso from '/src/components/SeeAlso.astro'
 import { Aside, Badge, Code } from '@astrojs/starlight/components';
 
-lorem
+Without entering the address by pressing buttons on the DHD and entering the address using Redstone Input, manual entry is another method of creating a stable wormhole.
+
+This entry also requires a sufficient amount of energy to create the wormhole and subsequently keep the gate active.
+
+## Milky Way Stargate
+<Aside type="note" title="Feature unavailable">
+This features is not available in-game at the moment.
+</Aside>
+
+## Universe Stargate
+Universe stargate has a unique dialing system - dialing from a list of saved stargates or dialing stargates within range.
+
+Manual dialing itself cannot be done in the same way as with the Milkyway stargates - by rotating glyph ring (in this case the entire stargate), but is done using a dialer.
+
+Its necessary to select the Dialing category and then select the symbols from the symbol menu that the stargate should enter. Confirm the selected symbol and add it to the current address by pressing the right mouse button.
+
+|  |  |
+|--|--|
+| <center>![Manual dialing](/assets/jsg/stargates/dialer_1.webp)</center> | <center>![Entered address](/assets/jsg/stargates/dialer_2.webp)</center> |
+| <center>Manual dialing</center> | <center>Entered address</center> |
+
+When address is completed, it must be confirmed - this confirmation is done by holding `shift` key + clicking the `right mouse button`. 
+Once the address is confirmed, it is dialed by stargate.
+
+Dilaing sequence can be interrupted at any time by pressing the `shift` key + clicking the `right mouse button`.
+
+<SeeAlso label="Address system" link="/jsg/stargates/getting-started/#address-system"/>

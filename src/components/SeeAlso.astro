@@ -1,0 +1,13 @@
+---
+interface Props {
+	label?: string;
+	link: string;
+}
+
+const { label, link } = Astro.props;
+import { Aside } from "@astrojs/starlight/components";
+---
+
+<Aside type="tip" title="See also:">
+<a href={link}>{label ? label : link}</a>
+</Aside>
