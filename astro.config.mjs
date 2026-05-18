@@ -73,6 +73,27 @@ export default defineConfig({
                                         {
                                             label: 'Tags',
                                             items: [{ autogenerate: { directory: 'jsg/data/tags' } }],
+                                        },
+                                        {
+                                            label: 'Advancements',
+                                            items: [{ autogenerate: { directory: 'jsg/data/advancements' } }],
+                                        },
+                                        {
+                                            label: 'Loot tables',
+                                            items: [{ autogenerate: { directory: 'jsg/data/loot-tables' } }],
+                                        },
+                                        {
+                                            label: 'World generation',
+                                            items: [
+                                                {
+                                                    label: 'Structures',
+                                                    items: [{ autogenerate: { directory: 'jsg/data/worldgen/structures' } }],
+                                                },
+                                                {
+                                                    label: 'Template pools',
+                                                    items: [{ autogenerate: { directory: 'jsg/data/worldgen/template-pools' } }],
+                                                }
+                                            ]
                                         }
                                     ],
                                 },
@@ -129,7 +150,12 @@ export default defineConfig({
                             label: 'JSG: Core',
                             link: '/jsg-core/',
                             icon: "setting",
-                            items: [],
+                            items: [
+                                {
+                                    label: 'Configuration',
+                                    items: [{ autogenerate: { directory: 'jsg-core/configuration' } }],
+                                }
+                            ],
                         },
                         {
                             id: 'jsg-rings',
