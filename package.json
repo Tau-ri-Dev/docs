@@ -18,6 +18,7 @@
     "patch-package": "^8.0.1",
     "rehype-external-links": "^3.0.0",
     "sharp": "^0.34.5",
+    "starlight-image-zoom": "^0.14.1",
     "starlight-sidebar-topics": "^0.7.1",
     "starlight-sidebar-topics-dropdown": "^0.6.0"
   }

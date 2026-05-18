@@ -3,6 +3,7 @@ import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import starlightSidebarTopics from "starlight-sidebar-topics";
 import rehypeExternalLinks from 'rehype-external-links';
+import starlightImageZoom from 'starlight-image-zoom'
 
 
 const prod = process.env.NODE_ENV === "production";
@@ -48,6 +49,7 @@ export default defineConfig({
                 //Sidebar: "@astrojs/starlight/components/Sidebar.astro",
             },
             plugins: [
+                starlightImageZoom(),
                 starlightSidebarTopics(
                     [
                         {
