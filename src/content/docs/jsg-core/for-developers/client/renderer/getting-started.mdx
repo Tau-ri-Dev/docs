@@ -1,0 +1,21 @@
+---
+title: "Getting started with rendering"
+slug: "jsg-core/for-developers/client/renderer/getting-started"
+description: "Set up everything to make own BlockEntity renderer"
+tableOfContents: false
+sidebar:
+  order: 0
+---
+import { FileTree, Tabs, TabItem, Steps } from "@astrojs/starlight/components";
+
+On this page, you will find out how to register BlockEntity Renderer (BER) and render custom OBJ models trough it.
+
+To create custom renderer for a BlockEntity, you first need a BlockEntity that is registered properly. For this tutorial, we are going to use BE called `ModBlockEntity`.
+
+Here is list of things we are going to need to do this:
+- BlockEntity class
+- register own LoadersHolder to load models and textures
+- create holder for all our models (Enum for example)
+- create BER class and register it
+
+How to create and register BlockEntity, you can find at the official Forge docs. We are going to do the rest...

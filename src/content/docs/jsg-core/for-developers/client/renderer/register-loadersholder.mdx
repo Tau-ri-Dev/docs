@@ -1,0 +1,47 @@
+---
+title: "Create a LoadersHolder"
+slug: "jsg-core/for-developers/client/renderer/register-loadersholder"
+description: "How to register own LoadersHolder to load textures and models"
+tableOfContents: false
+sidebar:
+  order: 1
+---
+import { FileTree, Tabs, TabItem, Steps, Aside } from "@astrojs/starlight/components";
+
+`LoadersHolder` class is responsible to hold models and textures loaders for your mod. These loaders are going to automatically load `.obj` models and custom sized textures.
+
+<Aside type="note">
+Models must be in folder `/assets/<your_mod_id>/models/tesr/` and textures in `/assets/<your_mod_id>/textures/tesr/` to be loaded!
+</Aside>
+
+<Aside type="tip">
+You can now use `.webp` textures!
+</Aside>
+
+<Steps>
+1. Create instance of the `LoadersHolder` class inside the main class
+	<FileTree>
+	- libs/
+	- src/main/
+		- java/your/namespace/your_mod_id/
+			- ...
+			- **ExampleMod.java**
+		- resources/assets/your_mod_id/
+			- textures/
+				- tesr/
+			- models/
+				- tesr/
+			- ...
+	- ...
+	</FileTree>
+	```java title="ExampleMod.java"
+	import dev.tauri.jsg.core.client.LoadersHolder;
+
+	@Mod("your_mod_id")
+	public class ExampleMod implements JSGAddon {
+    	public static final LoadersHolder LOADERS_HOLDER = LoadersHolder.getOrCreate("your_mod_id", ExampleMod.class);
+		// ...
+	}
+	```
+2. That's it! No registration needed when the instance is created inside the main class.
+</Steps>

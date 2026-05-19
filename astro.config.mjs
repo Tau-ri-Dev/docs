@@ -164,7 +164,13 @@ export default defineConfig({
                                     items: [
                                         { label: "Overview", slug: "jsg-core/for-developers" },
                                         { label: "Getting started", items: [{ autogenerate: { directory: 'jsg-core/for-developers/getting-started' } }] },
-                                        { label: "Helpers", items: [{ autogenerate: { directory: 'jsg-core/for-developers/helpers' } }] }
+                                        { label: "Helpers", items: [{ autogenerate: { directory: 'jsg-core/for-developers/helpers' } }] },
+                                        {
+                                            label: "Client",
+                                            items: [
+                                                { label: "Renderer", items: [{ autogenerate: { directory: 'jsg-core/for-developers/client/renderer' } }] }
+                                            ]
+                                        }
                                     ],
                                 }
                             ],

@@ -1,0 +1,111 @@
+---
+title: "Create a models holder"
+slug: "jsg-core/for-developers/client/renderer/create-models-holder"
+description: "Create own holder for your models, so you can access them easily"
+tableOfContents: false
+sidebar:
+  order: 2
+---
+import { FileTree, Tabs, TabItem, Steps, Aside } from "@astrojs/starlight/components";
+
+Models holder is an `Enum` of individual models bounded with their textures.
+
+<Aside type="note">
+Creating a models holder is **not necessary** to load textures or models (these are loaded automatically if they are placed in correct folders), 
+but it's easier to use the models later in code with this method.
+</Aside>
+
+<Steps>
+1. Create `ModModels.java` enum class and add your model
+	<FileTree>
+	- libs/
+	- src/main/
+		- java/your/namespace/your_mod_id/
+			- ...
+			- client/
+				- loader/
+					- **ModModels.java**
+			- ExampleMod.java
+		- resources/assets/your_mod_id/
+			- textures/
+				- tesr/
+			- models/
+				- tesr/
+			- ...
+	- ...
+	</FileTree>
+
+	This is an example of models holder class structure:
+
+	```java title="ModModels.java"
+	// ... other imports
+	import dev.tauri.jsg.core.client.IModelsHolder;
+	import dev.tauri.jsg.core.client.LoadersHolder;
+	import dev.tauri.jsg.core.common.entity.BiomeOverlayInstance;
+
+	public enum ModModels implements IModelsHolder { // should implement IModelsHolder
+
+		// MODEL ENTRY
+		// 1st parameter is path to the model file - must end with .obj
+		// 2nd parameter is BASE path to the texture - file end is added automatically by scanning if file exists when loading textures (.png, then .webp and then .jpg)
+		// 3rd parameter is true/false - true if you want to use different textures for each biome overlay
+		MY_AWESOME_MODEL_WITH_TEXTURE("awesome/model.obj", "awesome/textures", true)
+		;
+
+		// holds path to the obj model file
+		public final ResourceLocation model;
+		// map of texture path for each biome overlay registered in the core
+		public final Map<BiomeOverlayInstance, ResourceLocation> biomeTextureResourceMap = new HashMap<>();
+		// holds all biome overlays that have not been found for this model texture to prevent spamming log with errors
+		private final List<BiomeOverlayInstance> nonExistingReported = new ArrayList<>();
+
+		ModModels(String modelPath, String texturePath, boolean byOverlay) {
+			this.model = ExampleMod.LOADERS_HOLDER.model().getModelResource(modelPath);
+			loadEntry(texturePath, byOverlay);
+		}
+
+		@Override
+		public @NotNull LoadersHolder getLoadersHolder() {
+			return ExampleMod.LOADERS_HOLDER;
+		}
+
+		@Override
+		public @NotNull ResourceLocation getModelLocation() {
+			return model;
+		}
+
+		@Override
+		public @NotNull Map<BiomeOverlayInstance, ResourceLocation> getBiomeTextureResourceMap() {
+			return biomeTextureResourceMap;
+		}
+
+		@Override
+		public @NotNull List<BiomeOverlayInstance> getNonExistingTexturesReported() {
+			return nonExistingReported;
+		}
+	}
+	```
+2. Add model file and BASE texture
+	<FileTree>
+	- libs/
+	- src/main/
+		- java/your/namespace/your_mod_id/
+			- ...
+			- client/
+				- loader/
+					- ModModels.java
+			- ExampleMod.java
+		- resources/assets/your_mod_id/
+			- textures/
+				- tesr/
+					- awesome/
+						- **texture.webp**
+			- models/
+				- tesr/
+					- awesome/
+						- **model.obj**
+			- ...
+	- ...
+	</FileTree>
+3. Now you have added your model!
+</Steps>

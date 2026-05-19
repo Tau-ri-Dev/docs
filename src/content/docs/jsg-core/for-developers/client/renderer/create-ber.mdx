@@ -1,0 +1,112 @@
+---
+title: "Create a BER"
+slug: "jsg-core/for-developers/client/renderer/create-ber"
+description: "Create own renderer for a BlockEntity"
+tableOfContents: false
+sidebar:
+  order: 3
+---
+import { FileTree, Tabs, TabItem, Steps, Aside } from "@astrojs/starlight/components";
+
+BER (BlockEntity Renderer) is responsible of custom rendering of a BlockEntity.<br/>
+We are not going to go into details of how each rendering property works, but only teach you basics of the rendering.
+
+Let's say we have BlockEntity called `ModBlockEntity` and we want to make custom renderer for it.
+
+For this part, we will need these things:
+- [own LoadersHolder](/jsg-core/for-developers/client/renderer/register-loadersholder/)
+- [own Models Holder](/jsg-core/for-developers/client/renderer/create-models-holder/)
+
+If you have those things set up, follow these steps:
+
+<Steps>
+1. Create `ModBlockEntityRenderer.java` class
+	<FileTree>
+	- libs/
+	- src/main/java/your/namespace/your_mod_id/
+		- common/
+			- blockentity/
+				- ModBlockEntity.java
+			- registry/
+				- ModBlockEntities.java
+				- ModRegistriesInit.java
+		- client/
+			- renderer/
+				- blockentity/
+					- **ModBlockEntityRenderer.java**
+		- ExampleMod.java
+	- ...
+	</FileTree>
+	```java title="ModBlockEntityRenderer.java"
+	//... imports
+	public class ModBlockEntityRenderer implements BlockEntityRenderer<ModBlockEntity> {
+
+		// this constructor will be necessary to register your renderer later
+		public ModBlockEntityRenderer(BlockEntityRendererProvider.Context ignored) {
+    	}
+
+		// main method that is called to render our stuff every frame - NOT EVERY TICK! 
+		// (that means if you have 60fps, this method is called 60 times / second)
+		@Override
+		@ParametersAreNonnullByDefault
+		public void render(ModBlockEntity blockEntity, float partialTicks, PoseStack poseStack, MultiBufferSource bufferSource, int combinedLight, int combinedOverlay) {
+			//...		
+			poseStack.pushPose(); // push the renderer to new "layer"
+
+			// examples of render stuff
+			poseStack.translate(x, y, z); // translate the layer (move the rendered object around)
+			poseStack.scale(scaleX, scaleY, scaleZ); // scale the model
+			poseStack.mulPose(Axis.YP.rotationDegrees(45)); // rotate the model 45 degrees around Y axis
+			// ---------
+
+			// RENDER OUR MODEL
+			// the easiest way to render the model
+			// you can try experimenting on your own with other methods
+			ModModels.MY_AWESOME_MODEL_WITH_TEXTURE // get the model
+				.bindTexture() // bind the texture to the shader
+				.render(poseStack, bufferSource, combinedLight); // render vertexes of the obj model by GPU
+			// ---------
+
+			poseStack.popPose(); // pop the renderer back to previous "layer"
+		}
+	}
+	```
+2. Update `ModBlockEntities.java`
+	<FileTree>
+	- libs/
+	- src/main/java/your/namespace/your_mod_id/
+		- common/
+			- blockentity/
+				- ModBlockEntity.java
+			- registry/
+				- **ModBlockEntities.java**
+				- ModRegistriesInit.java
+		- client/
+			- renderer/
+				- blockentity/
+					- ModBlockEntityRenderer.java
+		- ExampleMod.java
+	- ...
+	</FileTree>
+	```java title="ModBlockEntities.java"
+	public class ModBlockEntities {
+		// ...
+		public static final RegistryObject<BlockEntityType<ModBlockEntity>> MY_MOD_BE = ...
+
+		// ...
+
+		public static void init() {
+			// register our created BER
+			ModRegistriesInit.REGISTRY_HELPER.beRenderers(() -> List.of(
+				new RegistryHelper.BlockEntityRendererPair<>(MY_MOD_BE.get(), ModBlockEntityRenderer::new)
+				// add more for each BER...
+			));
+		}
+	}
+	```
+3. That's it! Try it running ingame!
+</Steps>
+
+<Aside type="tip">
+You can try running the project in debug mode and with that you can edit content in `ModBlockEntityRenderer::render()` without need to restart the game!
+</Aside>
