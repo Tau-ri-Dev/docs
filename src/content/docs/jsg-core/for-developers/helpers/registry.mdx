@@ -131,3 +131,59 @@ Registry helper is a class that is responsible of holding registries and helping
 	}
 	```
 </Steps>
+
+## Registering a block
+
+<Steps>
+1. Create class `ModBlocks.java`
+	<FileTree>
+	- libs/
+	- src/main/java/your/namespace/your_mod_id/
+		- common/
+			- registry/
+				- **ModBlocks.java**
+				- ModRegistriesInit.java
+		- ExampleMod.java
+	- ...
+	</FileTree>
+	```java title="ModBlocks.java"
+	import dev.tauri.jsg.core.common.registry.helper.builder.block.BlockRegistryHelperGeneric;
+	import dev.tauri.jsg.core.common.registry.CoreTabs; // only needed when using CoreTabs
+	import net.minecraft.world.level.block.Block;
+	import net.minecraftforge.registries.RegistryObject;
+
+	public class ModBlocks {
+		// create block registry helper
+    	public static final BlockRegistryHelperGeneric BLOCK_HELPER = new BlockRegistryHelperGeneric(ModRegistriesInit.REGISTRY_HELPER::block);
+
+
+		// register your block
+		public static final RegistryObject<Block> MY_AWESOME_BLOCK = BLOCK_HELPER.builder("my_awesome_block").buildGeneric();
+
+
+		// this method will be called from the init() in ModRegistriesInit.java
+		public static void init() {}
+	}
+	```
+2. Update your `ModRegistriesInit.java`
+	<FileTree>
+	- libs/
+	- src/main/java/your/namespace/your_mod_id/
+		- common/
+			- registry/
+				- ModBlocks.java
+				- **ModRegistriesInit.java**
+		- ExampleMod.java
+	- ...
+	</FileTree>
+	```java title="ModRegistriesInit.java"
+	public class ModRegistriesInit {
+		// ...
+		public static void init() {
+			// ...
+			ModBlocks.init(); // init the mod blocks
+		}
+		// ...
+	}
+	```
+</Steps>
