@@ -13,21 +13,29 @@ However, the steps below should apply to other IDEs as well, with some minor cha
 ## Adding JSG: Core as a dependency
 
 <Steps>
-1. Download JSG: Core jar file from CurseForge or Modrinth
-2. Put it inside `<your project root>/libs/jsg-core-MINECRAFT_VERSION-CORE_VERSION.jar`
+1. Update your `gradle.properties` as shown:
 	<FileTree>
-	- libs/
-		- **jsg-core-MINECRAFT_VERSION-CORE_VERSION.jar**
 	- src/
 	- build.gradle
-	- gradle.properties
+	- **gradle.properties**
 	- setting.gradle
 	- ...
 	</FileTree>
-3. Update your `build.gradle` as shown:
+
+	Add these two lines:
+
+	```properties adlew title="gradle.properties"
+	core_version=1+
+	core_version_range=[1.0.0.0,)
+	```
+
+	Make sure the file also contains this line:
+
+	```properties adlew title="gradle.properties"
+	minecraft_version=1.20.1
+	```
+2. Update your `build.gradle` as shown:
 	<FileTree>
-	- libs/
-		- jsg-core-MINECRAFT_VERSION-CORE_VERSION.jar
 	- src/
 	- **build.gradle**
 	- gradle.properties
@@ -51,21 +59,43 @@ However, the steps below should apply to other IDEs as well, with some minor cha
 	}
 
 	repositories {
-		flatDir {
-			dir rootDir.getAbsolutePath() + "/libs" // <---- Add this line!!!
+		// Add this:
+		maven {
+			name = 'Just SG Mod'
+			url = 'https://maven.justsgmod.eu'
 		}
 	}
 
 	dependencies {
-		// replace MINECRAFT_VERSION with your minecraft version (1.20.1 for example)
-		// replace CORE_VERSION with proper core version (1.0.0.0 for example)
-		implementation fg.deobf("dev.tauri:jsg-core-MINECRAFT_VERSION:CORE_VERSION") // <---- Add this line!!!
+		implementation fg.deobf("dev.tauri:jsg-core-${minecraft_version}:${core_version}") // <---- Add this line!!!
+	}
+
+	// UPDATE processResources TASK AS SHOWN: !IMPORTANT!
+	tasks.named('processResources', ProcessResources).configure {
+		var replaceProperties = [
+				minecraft_version      : minecraft_version,
+				minecraft_version_range: minecraft_version_range,
+				forge_version          : forge_version,
+				forge_version_range    : forge_version_range,
+				loader_version_range   : loader_version_range,
+				mod_id                 : mod_id,
+				mod_name               : mod_name,
+				mod_license            : mod_license,
+				mod_version            : version,
+				mod_authors            : mod_authors,
+				mod_description        : mod_description,
+				core_version_range     : core_version_range // <-- MAKE SURE THIS LINE IS PRESENT
+		]
+
+		inputs.properties replaceProperties
+
+		filesMatching(['META-INF/mods.toml', 'pack.mcmeta']) {
+			expand replaceProperties + [project: project]
+		}
 	}
 	```
-4. Update mods.toml
+3. Update mods.toml
 	<FileTree>
-	- libs/
-		- jsg-core-MINECRAFT_VERSION-CORE_VERSION.jar
 	- src/main/resources/META-INF/
 		- **mods.toml**
 	- build.gradle
@@ -74,14 +104,13 @@ However, the steps below should apply to other IDEs as well, with some minor cha
 	- ...
 	</FileTree>
 	```toml title="mods.toml"
-	# replace CORE_VERSION_RANGE with proper core version range
 	# ADD THIS BLOCK
 	[[dependencies.${mod_id}]]
 		modId="jsg_core"
 		mandatory=true
-		versionRange="CORE_VERSION_RANGE"
+		versionRange="${core_version_range}"
 		ordering="NONE"
-   		side="BOTH"
+		side="BOTH"
 	```
 5. Reload your gradle project
 </Steps>
