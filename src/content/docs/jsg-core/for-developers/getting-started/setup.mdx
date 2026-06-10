@@ -64,7 +64,8 @@ However, the steps below should apply to other IDEs as well, with some minor cha
 	}
 
 	dependencies {
-		implementation fg.deobf("dev.tauri:jsg-core-${minecraft_version}:${core_version}") // <---- Add this line!!!
+		// DO NOT FORGET transitive = false !!!!
+		implementation(fg.deobf("eu.justsgmod:jsg-core-${minecraft_version}:${core_version}") { transitive = false }) // <---- Add this line!!!
 	}
 
 	// UPDATE processResources TASK AS SHOWN: !IMPORTANT!
