@@ -65,7 +65,8 @@ However, the steps below should apply to other IDEs as well, with some minor cha
 
 	dependencies {
 		// DO NOT FORGET transitive = false !!!!
-		implementation(fg.deobf("eu.justsgmod:jsg-core-${minecraft_version}:${core_version}") { transitive = false }) // <---- Add this line!!!
+		// DO NOT FORGET TO PUT ":" AT THE END - to make gradle download the FULL shadowed jar file
+		implementation(fg.deobf("eu.justsgmod:jsg-core-${minecraft_version}:${core_version}:") { transitive = false }) // <---- Add this line!!!
 	}
 
 	// UPDATE processResources TASK AS SHOWN: !IMPORTANT!
