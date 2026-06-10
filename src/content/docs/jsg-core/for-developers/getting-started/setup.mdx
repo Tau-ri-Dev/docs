@@ -59,11 +59,8 @@ However, the steps below should apply to other IDEs as well, with some minor cha
 	}
 
 	repositories {
-		// Add this:
-		maven {
-			name = 'Just SG Mod'
-			url = 'https://maven.justsgmod.eu'
-		}
+		// Add the maven central, if already not done
+		mavenCentral()
 	}
 
 	dependencies {
