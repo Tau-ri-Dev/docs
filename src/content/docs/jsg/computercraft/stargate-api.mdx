@@ -26,3 +26,58 @@ without specify stargate network ID:<br/>
 
 with specified stargate network ID:<br/>
 `local sg = peripheral.wrap("stargate_<id>")`
+
+## Informative methods
+Methods marked with ★ are available for all stargate types
+
+### getGateType() ★
+<details>
+<summary>Gets what kind of stargate is connected to the computer</summary>
+**Returns:**<br/>
+- gateType : *String* - ["MilkyWay", "Movie", "Tollan", "Pegasus", "Universe", "Orlin's", ...]
+</details>
+
+### getSymbolType() ★
+<details>
+<summary>Gets the type glyphs used by the gate when dialing</summary>
+**Returns:**<br/>
+- glyphType : *String* - ["jsg:milkyway", "jsg:pegasus", "jsg:universe", ...]
+</details>
+
+### getSymbolsMap() ★
+<details>
+<summary>Gets a list of valid symbols for the connected gate</summary>
+**Returns:**<br/>
+- glyphs : *String[]* - A list of glyph names
+</details>
+
+### getGateStatus() ★
+<details>
+<summary>Gets the current status of the gate</summary>
+**Returns:**<br/>
+- success : *Boolean* - True if no error occurred during processing, otherwise false
+- status : *String* - ["idle", "dialing", "dialing_computer", "dialing_remote", "open", "unstable_opening", "unstable_closing", "failing", "resetting", "incoming"]
+- initiating : *Boolean* - Optional when status is "open": True when outgoing wormhole othervise false
+</details>
+
+### getOpenedTime() ★
+<details>
+<summary>Gets the amount of time the gate has been open for</summary>
+**Returns:**<br/>
+- success : *Boolean* - True if no error occurred during processing, otherwise false
+- response : *String* - ["stargate_time", "stargate_not_connected"]
+- minutes : *Int* - Optional when status is "stargate_time": return how long stargate is active - minutes part
+- seconds : *Int* - Optional when status is "stargate_time": return how long stargate is active - seconds part
+</details>
+
+### getSymbolsNeeded(address) ★
+<details>
+<summary>Returns the number of glyphs needed to dial the address</summary>
+**Parameters:**<br/>
+- address : *Table* - table with symbols name or IDs
+
+**Returns:**<br/>
+- success : *Boolean* - True if no error occurred during processing, otherwise false
+- response : *String* - ["not_merged", "address_malformed", "gate_not_found", "symbols_needed"]
+- symbolsCount : *Int* - Optional when response is "symbols_needed": minimal symbols to dial include PoO
+</details>
