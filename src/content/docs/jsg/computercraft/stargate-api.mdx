@@ -1,0 +1,28 @@
+---
+title: "Stargate API"
+slug: jsg/computercraft/stargate-api
+description: "Methods that you can use to control stargates"
+sidebar:
+  order: 1
+---
+
+This section of documentation covers all functions associated with Stargate. To start communication between computer and Stargate, its neccesarry to connect these 2 devices:
+- Wired modem must be placed on any side (except the side where event horizon is created) of stargate base block
+- Wired modem must be placed on any side (except screen) of computer
+- These wired modems must be connected with a networking cables
+- Both wired modems need to be actived by right click - inactive modem has black connector, active has red connector
+
+After activation, a message will be written to the chat as follows:
+
+<center>**Peripheral <span style="color: #64B251">id</span>_<span style="color: #BE66DE">int</span> connected to network**</center>
+<span style="color: #64B251">id</span> - name of device
+<span style="color: #BE66DE">int</span>  - numerical network device ID (used in <span style="color: #CA6826">peripheral.wrap</span>)
+
+### How to get device
+To use the stargate functions, a little programming is required, for example:
+
+without specify stargate network ID:<br/>
+`local sg = peripheral.find("stargate")`
+
+with specified stargate network ID:<br/>
+`local sg = peripheral.wrap("stargate_<id>")`
