@@ -1,0 +1,21 @@
+{
+	"short_name": "Tau'ri Dev Docs",
+	"name": "Tau'ri Dev Docs",
+	"icons": [
+		{
+			"src": "https://docs.tauridev.eu/assets/favicon.png",
+			"type": "image/png",
+			"sizes": "512x512"
+		},
+		{
+			"src": "https://docs.tauridev.eu/assets/favicon192.png",
+			"type": "image/png",
+			"sizes": "192x192"
+		}
+	],
+	"prefer_related_applications": false,
+	"start_url": "https://docs.tauridev.eu",
+	"display": "standalone",
+	"theme_color": "#ffffff",
+	"background_color": "#12141C"
+}

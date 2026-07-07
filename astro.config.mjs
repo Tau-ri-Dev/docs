@@ -9,7 +9,7 @@ import starlightImageZoom from 'starlight-image-zoom'
 const prod = process.env.NODE_ENV === "production";
 
 export default defineConfig({
-    site: prod ? "https://docs.justsgmod.eu" : undefined,
+    site: prod ? "https://docs.tauridev.eu" : undefined,
     markdown: {
         rehypePlugins: [[rehypeExternalLinks, { target: '_blank', rel: [] }]],
     },
@@ -17,6 +17,28 @@ export default defineConfig({
         starlight({
             favicon: '/assets/favicon.png',
             title: 'Tau\'ri Dev Docs',
+            description: 'Home of documentations for all Tau\'ri Dev projects. Check out how to build stargates with JSG mod, use Transport Rings with JSG: Rings and Additions or play cool music with Redstone Jukeboxes Mod!',
+            head: [
+                { tag: "meta", attrs: { charset: "URF-8"} },
+                { tag: "link", attrs: { rel: "manifest", href: "/manifest.json" } },
+
+                // meta tags
+                { tag: "meta", attrs: { name: "author", content: "Tau'ri Dev" } },
+
+                // color scheme
+                { tag: "meta", attrs: { name: "theme-color", content: "#ffffff" } },
+                { tag: "meta", attrs: { name: "msapplication-navbutton-color", content: "#ffffff" } },
+                { tag: "meta", attrs: { name: "apple-mobile-web-app-status-bar-style", content: "#ffffff" } },
+
+                // open graph
+                { tag: "meta", attrs: { property: "og:type", content: "website" } },
+                { tag: "meta", attrs: { property: "og:url", content: "https://docs.tauridev.eu" } },
+                { tag: "meta", attrs: { property: "og:image", content: "https://docs.tauridev.eu/assets/favicon.png" } },
+
+                { tag: "meta", attrs: { property: "twitter:card", content: "summary_large_image" } },
+                { tag: "meta", attrs: { property: "twitter:url", content: "https://docs.tauridev.eu" } },
+                { tag: "meta", attrs: { property: "twitter:image", content: "https://docs.tauridev.eu/assets/favicon.png" } },
+            ],
             editLink: {
                 baseUrl: 'https://github.com/Tau-ri-Dev/docs/edit/main/',
             },

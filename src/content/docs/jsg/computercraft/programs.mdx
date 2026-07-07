@@ -1,0 +1,121 @@
+---
+title: "Example programs"
+slug: jsg/computercraft/example-programs
+description: "Example programs for ComputerCraft that you can use"
+sidebar:
+  order: 10
+---
+import { Aside, Badge } from "@astrojs/starlight/components";
+
+These programs are free to use for personal purpose or inspiration.
+
+## Stargate fixed address dialing program
+
+This dialing program contains fixed address, which must be filled in directly in program source code into a table called `stargateAddress`.<br/>
+Individual entries in table are enclosed in quotation marks and separated by comma.<br/>
+Symbol IDs are listed in section [stargate/glyphs](/jsg/stargates/glyphs/milkyway/).<br/>
+It is necessary to fill in complete address, including PoO!<br/>
+
+This dialing program will automatically start dialing address when it is run.<br/>
+Program can therefore be installed multiple times under different name and run specific programs to activate stargate to specific locations.<br/>
+
+Dialing program is really simple, so if stargate already has a glyph encoded or glyph or address type is entered incorrectly - program will not register it and it may / will crash.
+
+It is therefore more suitable as a basis for more advanced assignment programs.
+
+```lua adlew title="dial.lua"
+--[[
+	Author: Fredyman_95 aka CartersToaster
+]]--
+
+local sg = peripheral.find("stargate")
+local stargateAddress = {"Monoceros", "Auriga", "Leo", "Orion", "Bootes", "Gemini", "Point of Origin"}
+print("Entering Coordinates And Initalization Stargate Dialing Sequence.")
+
+for i, v in ipairs(stargateAddress) do
+    print("Dialing " .. i .. " symbol ID: " .. v)
+    sg.engageSymbol(v)
+    os.pullEvent("stargate_chevron_engaged")
+end
+
+print("All Symbols Encoded, Engaging Stargate!")
+sg.engageGate()
+```
+
+## Stargate User input address dialing program
+
+This stargate dialing program does not contain a fixed address.<br/>
+At each start, it asks how many glyphs to dial and then prompts the user to enter the ID of each glyph - glyph ids can be found in section [stargate/glyphs](/jsg/stargates/glyphs/milkyway/).<br/>
+Program fills in PoO itself according to type of connected stargate.<br/>
+
+Dialing program is really simple, so if stargate already has a glyph encoded or glyph or address type is entered incorrectly - program will not register it and it may / will crash.
+
+It is therefore more suitable as a basis for more advanced assignment programs.
+
+```lua adlew title="dial.lua"
+--[[
+	Author: Fredyman_95 aka CartersToaster
+]]--
+
+local sg = peripheral.find("stargate")
+local stargateAddress = {}
+
+print("How many symbols do you want to dial?")
+answer = io.read()
+answer = tonumber(answer)
+
+if answer < 7 then error("Input value is low! - Desire value is 7 - 9!")
+elseif answer > 9 then error("Input value is high! - Desire value is 7 - 9!") 
+end
+
+answer = answer - 1
+os.sleep(1)
+
+for i=1, answer, 1 do
+    print("Enter " .. i .. " symbol please!")
+    table.insert(stargateAddress, io.read())
+    os.sleep(0.5)
+    print("Symbol successfully saved to database")
+end
+
+if sg.getGateType() == "pegasus" then 
+    table.insert(stargateAddress, "subido") 
+elseif sg.getGateType() == "universe" then 
+    table.insert(stargateAddress, "G17") 
+else 
+    table.insert(stargateAddress, "Point of Origin") 
+end 
+
+answer = answer + 1
+
+print("Address with " .. answer .. " symbols saved!")
+os.sleep(1)
+
+print("Entering Coordinates And Initalization Stargate Dialing Sequence.")
+
+for i, v in ipairs(stargateAddress) do
+    print("Dialing " .. i .. " symbol ID: " .. v)
+    sg.engageSymbol(v)
+    os.pullEvent("stargate_chevron_engaged")
+end
+
+print("All Symbols Encoded, Engaging Stargate!")
+sg.engageGate()
+```
+
+## Printer example printing program
+
+This program prints notebook pages with custom text and/or images.<br/>
+More information in sections Machines/printer and ComputerCraft integration/Printer API
+
+```lua adlew title="printer.lua"
+--[[
+	Author: Fredyman_95 aka CartersToaster
+]]--
+
+printer = peripheral.find("printer")
+title = "Title of Page"
+data = {"Page content - custom text or Image"}
+
+printer.printCustomText(title, data)
+```
