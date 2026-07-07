@@ -4,8 +4,10 @@ slug: jsg/computercraft/stargate-api
 description: "Methods that you can use to control stargates"
 sidebar:
   order: 1
+tableOfContents:
+  maxHeadingLevel: 3
 ---
-import { Aside } from "@astrojs/starlight/components";
+import { Aside, Badge } from "@astrojs/starlight/components";
 
 This section of documentation covers all functions associated with Stargate. To start communication between computer and Stargate, its neccesarry to connect these 2 devices:
 - Wired modem must be placed on any side (except the side where event horizon is created) of stargate base block
@@ -32,31 +34,43 @@ without specify stargate network ID:<br/>
 with specified stargate network ID:<br/>
 `local sg = peripheral.wrap("stargate_<id>")`
 
-## Informative methods
+## Methods
+This is how a stargate method can be called:
+```lua adlew title="script.lua"
+local sg = peripheral.find("stargate")
+local success, status, initiating = sg.getGateStatus();
+--[[
+  success will store true/false
+  status will store gate's status
+  initiating will be true when open gate is outgoing
+]]--
+```
+
+### Informative methods
 Functions that will give you generic informations about the stargate.
 
-### getGateType() ★
+#### getGateType() ★
 <details>
 <summary>Gets what kind of stargate is connected to the computer</summary>
 **Returns:**<br/>
 - `gateType` : *String* - ["MilkyWay", "Movie", "Tollan", "Pegasus", "Universe", "Orlin's", ...]
 </details>
 
-### getSymbolType() ★
+#### getSymbolType() ★
 <details>
 <summary>Gets the type glyphs used by the gate when dialing</summary>
 **Returns:**<br/>
 - `glyphType` : *String* - ["jsg:milkyway", "jsg:pegasus", "jsg:universe", ...]
 </details>
 
-### getSymbolsMap() ★
+#### getSymbolsMap() ★
 <details>
 <summary>Gets a list of valid symbols for the connected gate</summary>
 **Returns:**<br/>
 - `glyphs` : *String[]* - A list of glyph names
 </details>
 
-### getGateStatus() ★
+#### getGateStatus() ★
 <details>
 <summary>Gets the current status of the gate</summary>
 **Returns:**<br/>
@@ -65,7 +79,7 @@ Functions that will give you generic informations about the stargate.
 - `initiating` : *Boolean* - Optional when status is "open": True when outgoing wormhole otherwise false
 </details>
 
-### getOpenedTime() ★
+#### getOpenedTime() ★
 <details>
 <summary>Gets the amount of time the gate has been open for</summary>
 **Returns:**<br/>
@@ -75,7 +89,7 @@ Functions that will give you generic informations about the stargate.
 - `seconds` : *Int* - Optional when status is "stargate_time": return how long stargate is active - seconds part
 </details>
 
-### getSymbolsNeeded(`address`) ★
+#### getSymbolsNeeded(`address`) ★
 <details>
 <summary>Returns the number of glyphs needed to dial the address</summary>
 **Parameters:**<br/>
@@ -87,21 +101,21 @@ Functions that will give you generic informations about the stargate.
 - `symbolsCount` : *Int* - Optional when response is "symbols_needed": minimal symbols to dial include PoO
 </details>
 
-### getStargateAddress() ★
+#### getStargateAddress() ★
 <details>
 <summary>Returns all local stargate [address system](/jsg/stargates/getting-started/#address-system) addresses</summary>
 **Returns:**<br/>
 - `addressMap` : *Table* - Table with stargate addresses for each symbol typ
 </details>
 
-### getDialedAddress() ★
+#### getDialedAddress() ★
 <details>
 <summary>Returns current entered glyphs in stargate buffer</summary>
 **Returns:**<br/>
 - `address` : *Table* - Table with dialed symbols
 </details>
 
-### getNearbyGates(`gateType`, `ignoreGateType`, `checkAddressAndEnergy`) ★
+#### getNearbyGates(`gateType`, `ignoreGateType`, `checkAddressAndEnergy`) ★
 <details>
 <summary>Returns stargates in nearby radius</summary>
 **Parameters:**<br/>
@@ -115,7 +129,7 @@ Functions that will give you generic informations about the stargate.
 - `gates` : *Table* - Table with available gates, theire addresses and symbols required to dial
 </details>
 
-### getTopSymbol()
+#### getTopSymbol()
 <details>
 <summary>Returns current glyph under top chevron</summary>
 <Aside type="danger" title="Not available for Pegasus gate type">
@@ -132,7 +146,7 @@ If `success` is true then:
 - `ringAngle` : *Double* - Angle of stargate ring
 </details>
 
-### getRingAngle()
+#### getRingAngle()
 <details>
 <summary>Returns angle of the glyph ring</summary>
 <Aside type="danger" title="Not available for Pegasus gate type">
@@ -143,7 +157,7 @@ This method cannot be used on Pegasus gates properly.
 - `angle` : *Double* - Optional if success is true: angle of glyph ring in degrees
 </details>
 
-### isSpinning()
+#### isSpinning()
 <details>
 <summary>Returns if the stargate is spinning</summary>
 **Returns:**<br/>
@@ -151,7 +165,7 @@ This method cannot be used on Pegasus gates properly.
 - `ringVelocity` : *Double* - Speed of glyph ring (deg/tick)
 </details>
 
-### getChevronStatus(`index`)
+#### getChevronStatus(`index`)
 <details>
 <summary>Returns chevron status</summary>
 **Parameters:**<br/>
@@ -164,10 +178,10 @@ This method cannot be used on Pegasus gates properly.
 - `chevronState` : *Boolean* - True when chevron is activated otherwise false
 </details>
 
-## Energy methods
+### Energy methods
 Functions that will return informations about energy storage of the stargate.
 
-### getEnergyCrystalsInstalled()
+#### getEnergyCrystalsInstalled()
 *Formerly `getCapacitorsInstalled()`*<br/>
 <details>
 <summary>Returns the amount of Energy Crystals installed in the Stargate</summary>
@@ -175,21 +189,21 @@ Functions that will return informations about energy storage of the stargate.
 - `crystalsCount` : *Int* - 0\~3, nil in case when stargate is not merged
 </details>
 
-### getEnergyStored()
+#### getEnergyStored()
 <details>
 <summary>Returns the amount of energy stored by the Stargate</summary>
 **Returns:**<br/>
 - `energy` : *Long* - Amount of energy stored in FE
 </details>
 
-### getMaxEnergyStored()
+#### getMaxEnergyStored()
 <details>
 <summary>Returns the electrical capacity of the Stargate</summary>
 **Returns:**<br/>
 - `maxEnergy` : *Long* - Amount of energy that can be stored i.e. capacity in FE
 </details>
 
-### getEnergyRequiredToDial(`address`)
+#### getEnergyRequiredToDial(`address`)
 <details>
 <summary>Returns the amount of energy needed to dial an address</summary>
 **Parameters:**<br/>
@@ -201,10 +215,10 @@ Functions that will return informations about energy storage of the stargate.
 - `energyMap` : *Table* - Optional when `response` is "energy_map": contain 3 entries: \{open, keepAlive, canOpen\}
 </details>
 
-## Dialing methods
+### Dialing methods
 Function that operates the gate's dialing sequence.
 
-### dialAddress(`address`)
+#### dialAddress(`address`)
 <details>
 <summary>Dials a full address, including Point of Origin</summary>
 **Parameters:**<br/>
@@ -219,7 +233,7 @@ Function that operates the gate's dialing sequence.
 - `bad argument (symbol name/index invalid)` : *IllegalArgumentException* - Thown when bad symbol is input inside the address
 </details>
 
-### engageTopSymbol()
+#### engageTopSymbol()
 <details>
 <summary>Engage symbol under Top chevron</summary>
 <Aside type="danger" title="Not available for Pegasus gate type">
@@ -231,7 +245,7 @@ This method cannot be used on Pegasus gates properly.
 - `readableResponse` : *String* - Readable response
 </details>
 
-### abortDialing()
+#### abortDialing()
 <details>
 <summary>Aborts the active dialing sequence, resetting the gate to idle</summary>
 **Returns:**<br/>
@@ -240,7 +254,7 @@ This method cannot be used on Pegasus gates properly.
 - `readableResponse` : *String* - Readable response
 </details>
 
-### engageGate()
+#### engageGate()
 <details>
 <summary>Attempts to make a connection to the receiving gate and open a wormhole</summary>
 **Returns:**<br/>
@@ -249,7 +263,7 @@ This method cannot be used on Pegasus gates properly.
 - `readableResponse` : *String* - If `response` is not "stargate_engage": Readable response
 </details>
 
-### disengageGate()
+#### disengageGate()
 <details>
 <summary>Attempts to close the wormhole</summary>
 **Returns:**<br/>
@@ -258,7 +272,7 @@ This method cannot be used on Pegasus gates properly.
 - `readableResponse` : *String* - Readable response
 </details>
 
-### spinRing(?counterClockwise)
+#### spinRing(`?counterClockwise`)
 <details>
 <summary>Spins the stargate's ring</summary>
 **Parameters:**<br/>
@@ -270,7 +284,7 @@ This method cannot be used on Pegasus gates properly.
 - `readableResponse` : *String* - Readable response
 </details>
 
-### stopRingSpin()
+#### stopRingSpin()
 <details>
 <summary>Stops the stargate's ring</summary>
 **Returns:**<br/>
@@ -279,7 +293,7 @@ This method cannot be used on Pegasus gates properly.
 - `readableResponse` : *String* - Readable response
 </details>
 
-### engageSymbol(symbol)
+#### engageSymbol(`symbol`)
 <details>
 <summary>Spins the ring and engages the symbol</summary>
 **Parameters:**<br/>
@@ -294,10 +308,10 @@ This method cannot be used on Pegasus gates properly.
 - `bad argument (symbol name/index invalid)` : *IllegalArgumentException* - Thown when bad symbol is input
 </details>
 
-## Iris methods
+### Iris methods
 Functions that operate iris.
 
-### toggleIris()
+#### toggleIris()
 <details>
 <summary>Toggles the stargate's iris/shield</summary>
 <Aside type="note" title="Stargate config in GUI required!">
@@ -309,21 +323,21 @@ Stargate's iris mode needs to be set to OC/CC mode.
 - `readableResponse` : *String* - Readable response
 </details>
 
-### getIrisState()
+#### getIrisState()
 <details>
 <summary>Returns current iris/shield state</summary>
 **Returns:**<br/>
 - `state` : *String* - ["OPENED", "CLOSED", "OPENING", "CLOSING", "ERROR"]
 </details>
 
-### getIrisType()
+#### getIrisType()
 <details>
 <summary>Returns attached iris/shield type</summary>
 **Returns:**<br/>
 - `type` : *String* - ["NULL", "IRIS_TITANIUM", "IRIS_TRINIUM", "SHIELD", "IRIS_CREATIVE"]
 </details>
 
-### getIrisDurability()
+#### getIrisDurability()
 <details>
 <summary>Returns durability of the iris</summary>
 **Returns:**<br/>
@@ -332,10 +346,10 @@ Stargate's iris mode needs to be set to OC/CC mode.
 - `maxDurability` : *Int* - Maximum durability
 </details>
 
-## IDC and messagess
+### IDC and messagess
 Sending data trough open stargate.
 
-### sendIrisCode(code)
+#### sendIrisCode(`code`)
 <details>
 <summary>Sends IDC code trough outgoing stargate</summary>
 **Parameters:**<br/>
@@ -347,7 +361,7 @@ Sending data trough open stargate.
 - `readableResponse` : *String* - Readable response
 </details>
 
-### sendMessage(message)
+#### sendMessage(`message`)
 <details>
 <summary>Sends message to connected gate trough open wormhole</summary>
 **Parameters:**<br/>
@@ -362,7 +376,7 @@ If `success` is true then:
 - `message` : *String* - Sent message
 </details>
 
-### sendMessageToIncomingTraveller(message)
+#### sendMessageToIncomingTraveller(`message`)
 <details>
 <summary>Sends message to player/computer that sent IDC last. This method is intended to be used to reply to `stargate_iris_code_received` event.</summary>
 **Parameters:**<br/>
@@ -377,16 +391,16 @@ If `success` is true then:
 - `message` : *String* - Sent message
 </details>
 
-### sendMessageToIncoming() ⚠️
+#### sendMessageToIncoming() ⚠️
 <Aside type="danger" title="Method renamed">
 Since version: `6.0.0.0`<br/>
 New name: [`sendMessageToIncomingTraveller(message)`](/jsg/computercraft/stargate-api/#sendmessagetoincomingtravellermessage)
 </Aside>
 
-## Cinematic methods
+### Cinematic methods
 Functions that do only cinematic effects.
 
-### openChevron(index)
+#### openChevron(`index`)
 <details>
 <summary>Opens chevron's moving part</summary>
 **Parameters:**<br/>
@@ -398,7 +412,7 @@ Functions that do only cinematic effects.
 - `readableResponse` : *String* - Readable response
 </details>
 
-### activateChevron(index)
+#### activateChevron(`index`)
 <details>
 <summary>Activates the chevron (lights it up in most cases)</summary>
 **Parameters:**<br/>
@@ -410,7 +424,7 @@ Functions that do only cinematic effects.
 - `readableResponse` : *String* - Readable response
 </details>
 
-### closeChevron(index)
+#### closeChevron(`index`)
 <details>
 <summary>Closes chevron's moving part</summary>
 **Parameters:**<br/>
@@ -422,7 +436,7 @@ Functions that do only cinematic effects.
 - `readableResponse` : *String* - Readable response
 </details>
 
-### deactivateChevron(index)
+#### deactivateChevron(`index`)
 <details>
 <summary>Deactivates the chevron</summary>
 **Parameters:**<br/>
@@ -432,4 +446,351 @@ Functions that do only cinematic effects.
 - `success` : *Boolean* - True if no error occurred during processing, otherwise false
 - `response` : *String* - ["stargate_not_merged", "stargate_busy", "chevron_already_deactivated", "chevron_deactivate"]
 - `readableResponse` : *String* - Readable response
+</details>
+
+## Events
+<Aside>
+Each event when fired contains 1st parameter `eventName` which holds its name. This parameter will not be described under any event listed here.
+</Aside>
+
+### Ring events
+
+#### stargate_spin_start
+<details>
+<summary>Fired when gate's ring starts spinning</summary>
+**Parameters:**<br/>
+- `direction` : *String* - Spin direction ("CLOCKWISE" or "COUNTER_CLOCKWISE")
+- `speed` : *Double* - Initial ring speed in deg/tick
+
+```lua adlew title="script.lua"
+local eventName, direction, speed = os.pullEvent("stargate_spin_start")
+```
+</details>
+
+#### stargate_spin_stop
+<details>
+<summary>Fired when gate's ring stops spinning</summary>
+**Parameters:**<br/>
+- `topSymbol` : *?String* - Name of the current symbol under top chevron or nil if between two symbols
+
+```lua adlew title="script.lua"
+local eventName, topSymbol = os.pullEvent("stargate_spin_stop")
+```
+</details>
+
+### Chevron events
+
+#### stargate_chevron_engaged
+<details>
+<summary>Fired when chevron is engaged together with symbol</summary>
+**Parameters:**<br/>
+- `source` : *String* - Source of this event ["DHD", "REMOTE", "BY_SPIN"]
+- `symbol` : *String* - Name of the engaged symbol
+- `chevron` : *Int* - Engaged chevron's index [0, 1, 2, 3, 4, 5, 6, 7, 8, 9] (while 9 is the top - final - chevron)
+- `dialedAddressSize` : *Int* - New size of dialed address (1~9)
+
+```lua adlew title="script.lua"
+local eventName, source, symbol, chevron, dialedAddressSize = os.pullEvent("stargate_chevron_engaged")
+```
+</details>
+
+#### stargate_chevron_open
+<details>
+<summary>Fired when chevron is openned</summary>
+**Parameters:**<br/>
+- `chevron` : *Int* - Engaged chevron's index [0, 1, 2, 3, 4, 5, 6, 7, 8, 9] (while 9 is the top - final - chevron)
+
+```lua adlew title="script.lua"
+local eventName, chevron = os.pullEvent("stargate_chevron_open")
+```
+</details>
+
+#### stargate_chevron_lit
+<details>
+<summary>Fired when chevron is lit up</summary>
+**Parameters:**<br/>
+- `chevron` : *Int* - Engaged chevron's index [0, 1, 2, 3, 4, 5, 6, 7, 8, 9] (while 9 is the top - final - chevron)
+
+```lua adlew title="script.lua"
+local eventName, chevron = os.pullEvent("stargate_chevron_lit")
+```
+</details>
+
+#### stargate_chevron_close
+<details>
+<summary>Fired when chevron is closed</summary>
+**Parameters:**<br/>
+- `chevron` : *Int* - Engaged chevron's index [0, 1, 2, 3, 4, 5, 6, 7, 8, 9] (while 9 is the top - final - chevron)
+
+```lua adlew title="script.lua"
+local eventName, chevron = os.pullEvent("stargate_chevron_close")
+```
+</details>
+
+### Connection events
+<Badge text="Outgoing" variant="success" /> means that this event is fired on outgoing side of the connection.<br/>
+<Badge text="Incoming" variant="danger" /> means that this event is fired on incoming side of the connection.<br/>
+
+#### stargate_attempt_open_failed
+<Badge text="Outgoing" variant="success" />
+<details>
+<summary>Fired when openning the stargate failed</summary>
+**Parameters:**<br/>
+- `reason` : *String* - ["NOT_ENOUGH_POWER", "ADDRESS_MALFORMED", "ABORTED", "ABORTED_BY_EVENT", "CALLER_HUNG_UP", "GATE_BURRIED", "TARGET_GATE_BURRIED"]
+- `dialedAddress` : *Table* - the dialed address
+
+```lua adlew title="script.lua"
+local eventName, reason, dialedAddress = os.pullEvent("stargate_attempt_open_failed")
+```
+</details>
+
+#### stargate_attempt_close_failed
+<Badge text="Outgoing" variant="success" />
+<details>
+<summary>Fired when closing the stargate failed</summary>
+**Parameters:**<br/>
+- `reason` : *String* - ["NOT_OPEN", "CANNOT_DISENGAGE", "NOT_INITIATING", "BLOCKED_BY_EVENT"]
+- `dialedAddress` : *Table* - the dialed address
+- `isInitiating` : *Boolean* - true if gate has outgoing connection, otherwise false
+
+```lua adlew title="script.lua"
+local eventName, reason, dialedAddress, isInitiating = os.pullEvent("stargate_attempt_close_failed")
+```
+</details>
+
+#### stargate_wormhole_incoming
+<Badge text="Incoming" variant="danger" />
+<details>
+<summary>Fired when incoming wormhole occurs</summary>
+**Parameters:**<br/>
+- `addressSize` : *Int* - dialed address size (number of lit up chevrons)
+
+```lua adlew title="script.lua"
+local eventName, addressSize = os.pullEvent("stargate_wormhole_incoming")
+```
+</details>
+
+#### stargate_wormhole_subspace_connected
+<Badge text="Outgoing" variant="success" /> <Badge text="Incoming" variant="danger" />
+<details>
+<summary>Fired when subspace connection is made between two gates. No wormhole is present at this point - gates only know about each other.</summary>
+**Parameters:**<br/>
+- `dialedAddress` : *Table* - dialed address if fire on outgoing gate, otherwise empty address 
+- `isInitiating` : *Boolean* - true if it's fired on outgoing gate
+
+```lua adlew title="script.lua"
+local eventName, dialedAddress, isInitiating = os.pullEvent("stargate_wormhole_subspace_connected")
+```
+</details>
+
+#### stargate_wormhole_open_unstable
+<Badge text="Outgoing" variant="success" /> <Badge text="Incoming" variant="danger" />
+<details>
+<summary>Fired when wormhole connection is **being** established. Kawoosh is usually present at this point on both gates.</summary>
+**Parameters:**<br/>
+- `dialedAddress` : *Table* - dialed address if fire on outgoing gate, otherwise empty address 
+- `isInitiating` : *Boolean* - true if it's fired on outgoing gate
+
+```lua adlew title="script.lua"
+local eventName, dialedAddress, isInitiating = os.pullEvent("stargate_wormhole_open_unstable")
+```
+</details>
+
+#### stargate_wormhole_open_fully
+<Badge text="Outgoing" variant="success" /> <Badge text="Incoming" variant="danger" />
+<details>
+<summary>Fired when wormhole connection is **fully** established. Stable event horizon is present on both gates.</summary>
+**Parameters:**<br/>
+- `dialedAddress` : *Table* - dialed address if fire on outgoing gate, otherwise empty address 
+- `isInitiating` : *Boolean* - true if it's fired on outgoing gate
+
+```lua adlew title="script.lua"
+local eventName, dialedAddress, isInitiating = os.pullEvent("stargate_wormhole_open_fully")
+```
+</details>
+
+#### stargate_wormhole_close_unstable
+<Badge text="Outgoing" variant="success" /> <Badge text="Incoming" variant="danger" />
+<details>
+<summary>Fired when wormhole connection is **being** terminated. The gate's EH starts flickering on both sides.</summary>
+**Parameters:**<br/>
+- `dialedAddress` : *Table* - dialed address if fire on outgoing gate, otherwise empty address 
+- `reason` : *String* - reason of why is this happening ["REQUESTED", "CONNECTION_LOST", "AUTOCLOSE", "TIME_LIMIT", "OUT_OF_POWER", "COMMAND"]
+- `isInitiating` : *Boolean* - true if it's fired on outgoing gate
+
+```lua adlew title="script.lua"
+local eventName, dialedAddress, reason, isInitiating = os.pullEvent("stargate_wormhole_close_unstable")
+```
+</details>
+
+#### stargate_wormhole_close_fully
+<Badge text="Outgoing" variant="success" /> <Badge text="Incoming" variant="danger" />
+<details>
+<summary>Fired when wormhole connection is **fully** terminated. The gates should be idle at this point on both sides.</summary>
+**Parameters:**<br/>
+- `dialedAddress` : *Table* - dialed address if fire on outgoing gate, otherwise empty address 
+- `reason` : *String* - reason of why is this happening ["REQUESTED", "CONNECTION_LOST", "AUTOCLOSE", "TIME_LIMIT", "OUT_OF_POWER", "COMMAND"]
+- `isInitiating` : *Boolean* - true if it's fired on outgoing gate
+
+```lua adlew title="script.lua"
+local eventName, dialedAddress, reason, isInitiating = os.pullEvent("stargate_wormhole_close_fully")
+```
+</details>
+
+### Event Horizon events
+
+#### stargate_event_horizon_unstable
+<details>
+<summary>Fired when event horizon becomes unstable (for example because of power issues)</summary>
+**Parameters:**<br/>
+- `isInitiating` : *Boolean* - true if gate has outgoing connection, otherwise false
+
+```lua adlew title="script.lua"
+local eventName, isInitiating = os.pullEvent("stargate_event_horizon_unstable")
+```
+</details>
+
+#### stargate_event_horizon_unstable_black_hole
+<details>
+<summary>Fired when event horizon becomes unstable by gravitation force of a connected blackhole</summary>
+**Parameters:**<br/>
+- `isInitiating` : *Boolean* - true if gate has outgoing connection, otherwise false
+
+```lua adlew title="script.lua"
+local eventName, isInitiating = os.pullEvent("stargate_event_horizon_unstable_black_hole")
+```
+</details>
+
+#### stargate_event_horizon_stabilized
+<details>
+<summary>Fired when event horizon becomes stable again</summary>
+**Parameters:**<br/>
+- `isInitiating` : *Boolean* - true if gate has outgoing connection, otherwise false
+
+```lua adlew title="script.lua"
+local eventName, isInitiating = os.pullEvent("stargate_event_horizon_stabilized")
+```
+</details>
+
+#### stargate_event_horizon_traveler
+<details>
+<summary>Fired when traveler goes trough the gate</summary>
+**Parameters:**<br/>
+- `inbound` : *Boolean* - true if it's and inbound traveler
+- `entityType` : *String* - entity type of that traveler
+
+If `entityType` is instance of Player:
+- `playerUUID` : *String* - UUID of the player
+- `playerName` : *String* - Nickname of the player
+
+```lua adlew title="script.lua"
+local eventName, inbound, entityType, playerUUID, playerName = os.pullEvent("stargate_event_horizon_traveler")
+```
+</details>
+
+### Iris events
+
+#### stargate_iris_toggled
+<details>
+<summary>Fired when iris/shield is toggled</summary>
+**Parameters:**<br/>
+- `close` : *Boolean* - true when iris is now closing, otherwise false
+```lua adlew title="script.lua"
+local eventName, close = os.pullEvent("stargate_iris_toggled")
+```
+</details>
+
+#### stargate_iris_destroyed
+<details>
+<summary>Fired when iris is destroyed</summary>
+**Parameters:**<br/>
+- `reason` : *String* - reason why it gets destroyed ["COLLAPSED_UNDER_HIT", "MELTED_DOWN"]
+```lua adlew title="script.lua"
+local eventName, reason = os.pullEvent("stargate_iris_destroyed")
+```
+</details>
+
+#### stargate_iris_code_received
+<details>
+<summary>Fired when stargate receives IDC code from GDO/Computer on the other side</summary>
+**Parameters:**<br/>
+- `code` : *String* - the received code
+```lua adlew title="script.lua"
+local eventName, code = os.pullEvent("stargate_iris_code_received")
+```
+</details>
+
+#### stargate_iris_state_changed
+<details>
+<summary>Fired when iris/shield changes its state (closes, opens etc.)</summary>
+**Parameters:**<br/>
+- `oldState` : *String* - the old iris state ["OPENED", "CLOSED", "OPENING", "CLOSING", "ERROR"]
+- `newState` : *String* - the new iris state ["OPENED", "CLOSED", "OPENING", "CLOSING", "ERROR"]
+```lua adlew title="script.lua"
+local eventName, oldState, newState = os.pullEvent("stargate_iris_state_changed")
+```
+</details>
+
+#### stargate_iris_type_changed
+<details>
+<summary>Fired when iris/shield changes its type (null, shield, trinium etc.)</summary>
+**Parameters:**<br/>
+- `oldType` : *String* - the old iris type ["NULL", "IRIS_TITANIUM", "IRIS_TRINIUM", "SHIELD", "IRIS_CREATIVE"]
+- `newType` : *String* - the new iris type ["NULL", "IRIS_TITANIUM", "IRIS_TRINIUM", "SHIELD", "IRIS_CREATIVE"]
+```lua adlew title="script.lua"
+local eventName, oldType, newType = os.pullEvent("stargate_iris_type_changed")
+```
+</details>
+
+#### stargate_iris_mode_changed
+<details>
+<summary>Fired when iris/shield mode changed</summary>
+**Parameters:**<br/>
+- `oldMode` : *String* - the old iris mode ["OPENED", "CLOSED", "AUTO", "OC", "DIALER"]
+- `newMode` : *String* - the new iris mode ["OPENED", "CLOSED", "AUTO", "OC", "DIALER"]
+```lua adlew title="script.lua"
+local eventName, oldMode, newMode = os.pullEvent("stargate_iris_mode_changed")
+```
+</details>
+
+#### stargate_iris_damaged
+<details>
+<summary>Fired when iris is damaged</summary>
+**Parameters:**<br/>
+- `source` : *String* - source of that damage ["HIT", "HEAT"]
+- `damage` : *Int* - amount of that damage
+```lua adlew title="script.lua"
+local eventName, source, damage = os.pullEvent("stargate_iris_damaged")
+```
+</details>
+
+#### stargate_iris_hit
+<details>
+<summary>Fired when iris is hit by an object</summary>
+```lua adlew title="script.lua"
+local eventName = os.pullEvent("stargate_iris_hit")
+```
+</details>
+
+### Messaging events
+
+#### stargate_wormhole_incoming_message
+<details>
+<summary>Fired when stargate receives incoming message trough the open wormhole</summary>
+**Parameters:**<br/>
+- `message` : *String* - the message
+```lua adlew title="script.lua"
+local eventName, message = os.pullEvent("stargate_wormhole_incoming_message")
+```
+</details>
+
+### Lifecycle events
+
+#### stargate_ping
+<details>
+<summary>Fired every 5 seconds (or 100 ticks)</summary>
+This event is fired periodically when gate's base block is connected to the computer.
+```lua adlew title="script.lua"
+local eventName = os.pullEvent("stargate_ping")
+```
 </details>
