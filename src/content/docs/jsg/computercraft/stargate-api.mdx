@@ -5,6 +5,7 @@ description: "Methods that you can use to control stargates"
 sidebar:
   order: 1
 ---
+import { Aside } from "@astrojs/starlight/components";
 
 This section of documentation covers all functions associated with Stargate. To start communication between computer and Stargate, its neccesarry to connect these 2 devices:
 - Wired modem must be placed on any side (except the side where event horizon is created) of stargate base block
@@ -15,8 +16,12 @@ This section of documentation covers all functions associated with Stargate. To 
 After activation, a message will be written to the chat as follows:
 
 <center>**Peripheral <span style="color: #64B251">id</span>_<span style="color: #BE66DE">int</span> connected to network**</center>
-<span style="color: #64B251">id</span> - name of device
+<span style="color: #64B251">id</span> - name of device<br/>
 <span style="color: #BE66DE">int</span>  - numerical network device ID (used in <span style="color: #CA6826">peripheral.wrap</span>)
+
+<Aside>
+Methods marked with ★ are also available for Orlin's gate.
+</Aside>
 
 ### How to get device
 To use the stargate functions, a little programming is required, for example:
@@ -28,56 +33,403 @@ with specified stargate network ID:<br/>
 `local sg = peripheral.wrap("stargate_<id>")`
 
 ## Informative methods
-Methods marked with ★ are available for all stargate types
+Functions that will give you generic informations about the stargate.
 
 ### getGateType() ★
 <details>
 <summary>Gets what kind of stargate is connected to the computer</summary>
 **Returns:**<br/>
-- gateType : *String* - ["MilkyWay", "Movie", "Tollan", "Pegasus", "Universe", "Orlin's", ...]
+- `gateType` : *String* - ["MilkyWay", "Movie", "Tollan", "Pegasus", "Universe", "Orlin's", ...]
 </details>
 
 ### getSymbolType() ★
 <details>
 <summary>Gets the type glyphs used by the gate when dialing</summary>
 **Returns:**<br/>
-- glyphType : *String* - ["jsg:milkyway", "jsg:pegasus", "jsg:universe", ...]
+- `glyphType` : *String* - ["jsg:milkyway", "jsg:pegasus", "jsg:universe", ...]
 </details>
 
 ### getSymbolsMap() ★
 <details>
 <summary>Gets a list of valid symbols for the connected gate</summary>
 **Returns:**<br/>
-- glyphs : *String[]* - A list of glyph names
+- `glyphs` : *String[]* - A list of glyph names
 </details>
 
 ### getGateStatus() ★
 <details>
 <summary>Gets the current status of the gate</summary>
 **Returns:**<br/>
-- success : *Boolean* - True if no error occurred during processing, otherwise false
-- status : *String* - ["idle", "dialing", "dialing_computer", "dialing_remote", "open", "unstable_opening", "unstable_closing", "failing", "resetting", "incoming"]
-- initiating : *Boolean* - Optional when status is "open": True when outgoing wormhole othervise false
+- `success` : *Boolean* - True if no error occurred during processing, otherwise false
+- `status` : *String* - ["idle", "dialing", "dialing_computer", "dialing_remote", "open", "unstable_opening", "unstable_closing", "failing", "resetting", "incoming"]
+- `initiating` : *Boolean* - Optional when status is "open": True when outgoing wormhole otherwise false
 </details>
 
 ### getOpenedTime() ★
 <details>
 <summary>Gets the amount of time the gate has been open for</summary>
 **Returns:**<br/>
-- success : *Boolean* - True if no error occurred during processing, otherwise false
-- response : *String* - ["stargate_time", "stargate_not_connected"]
-- minutes : *Int* - Optional when status is "stargate_time": return how long stargate is active - minutes part
-- seconds : *Int* - Optional when status is "stargate_time": return how long stargate is active - seconds part
+- `success` : *Boolean* - True if no error occurred during processing, otherwise false
+- `response` : *String* - ["stargate_time", "stargate_not_connected"]
+- `minutes` : *Int* - Optional when status is "stargate_time": return how long stargate is active - minutes part
+- `seconds` : *Int* - Optional when status is "stargate_time": return how long stargate is active - seconds part
 </details>
 
-### getSymbolsNeeded(address) ★
+### getSymbolsNeeded(`address`) ★
 <details>
 <summary>Returns the number of glyphs needed to dial the address</summary>
 **Parameters:**<br/>
-- address : *Table* - table with symbols name or IDs
+- `address` : *Table* - table with symbols name or IDs
 
 **Returns:**<br/>
-- success : *Boolean* - True if no error occurred during processing, otherwise false
-- response : *String* - ["not_merged", "address_malformed", "gate_not_found", "symbols_needed"]
-- symbolsCount : *Int* - Optional when response is "symbols_needed": minimal symbols to dial include PoO
+- `success` : *Boolean* - True if no error occurred during processing, otherwise false
+- `response` : *String* - ["not_merged", "address_malformed", "gate_not_found", "symbols_needed"]
+- `symbolsCount` : *Int* - Optional when response is "symbols_needed": minimal symbols to dial include PoO
+</details>
+
+### getStargateAddress() ★
+<details>
+<summary>Returns all local stargate [address system](/jsg/stargates/getting-started/#address-system) addresses</summary>
+**Returns:**<br/>
+- `addressMap` : *Table* - Table with stargate addresses for each symbol typ
+</details>
+
+### getDialedAddress() ★
+<details>
+<summary>Returns current entered glyphs in stargate buffer</summary>
+**Returns:**<br/>
+- `address` : *Table* - Table with dialed symbols
+</details>
+
+### getNearbyGates(`gateType`, `ignoreGateType`, `checkAddressAndEnergy`) ★
+<details>
+<summary>Returns stargates in nearby radius</summary>
+**Parameters:**<br/>
+- `gateType` : *String* - Search for specific stargate type
+- `ignoreGateType` : *Boolean* - Ignore 1st parameter
+- `checkAddressAndEnergy` : *Boolean* - When true return only dialable stargates oterwise return all nearby gates
+
+**Returns:**<br/>
+- `success` : *Boolean* - True if no error occurred during processing, otherwise false
+- `response` : *String* - ["gate_not_merged", "success"]
+- `gates` : *Table* - Table with available gates, theire addresses and symbols required to dial
+</details>
+
+### getTopSymbol()
+<details>
+<summary>Returns current glyph under top chevron</summary>
+<Aside type="danger" title="Not available for Pegasus gate type">
+This method cannot be used on Pegasus gates properly.
+</Aside>
+**Returns:**<br/>
+- `success` : *Boolean* - True if no error occurred during processing, otherwise false
+
+If `success` is true then:
+- `symbolID` : *Int* - SymbolID
+- `symbolName` : *String* - English name of the symbol
+- `symbolAngle` : *Double* - Position of symbol on glyph ring - angle in degrees
+- `isOrigin` : *Boolean* - True if glyph is Point of Origin otherwise false
+- `ringAngle` : *Double* - Angle of stargate ring
+</details>
+
+### getRingAngle()
+<details>
+<summary>Returns angle of the glyph ring</summary>
+<Aside type="danger" title="Not available for Pegasus gate type">
+This method cannot be used on Pegasus gates properly.
+</Aside>
+**Returns:**<br/>
+- `success` : *Boolean* - False when connected gate is pegasus stargate otherwise true
+- `angle` : *Double* - Optional if success is true: angle of glyph ring in degrees
+</details>
+
+### isSpinning()
+<details>
+<summary>Returns if the stargate is spinning</summary>
+**Returns:**<br/>
+- `movement` : *Boolean* - True when stargate glyph ring is spinning
+- `ringVelocity` : *Double* - Speed of glyph ring (deg/tick)
+</details>
+
+### getChevronStatus(`index`)
+<details>
+<summary>Returns chevron status</summary>
+**Parameters:**<br/>
+- `index` : *Int* - Selection of chevron [0, 1, 2, 3, 4, 5, 6, 7, 8, 9] (while 9 is the top chevron)
+
+**Returns:**<br/>
+- `success` : *Boolean* - True if no error occurred during processing, otherwise false
+- `response` : *String* - ["stargate_not_merged", "chevron_not_found", "chevron_status"]
+- `isOpen` : *Boolean* - True when chevron is open otherwise false
+- `chevronState` : *Boolean* - True when chevron is activated otherwise false
+</details>
+
+## Energy methods
+Functions that will return informations about energy storage of the stargate.
+
+### getEnergyCrystalsInstalled()
+*Formerly `getCapacitorsInstalled()`*<br/>
+<details>
+<summary>Returns the amount of Energy Crystals installed in the Stargate</summary>
+**Returns:**<br/>
+- `crystalsCount` : *Int* - 0\~3, nil in case when stargate is not merged
+</details>
+
+### getEnergyStored()
+<details>
+<summary>Returns the amount of energy stored by the Stargate</summary>
+**Returns:**<br/>
+- `energy` : *Long* - Amount of energy stored in FE
+</details>
+
+### getMaxEnergyStored()
+<details>
+<summary>Returns the electrical capacity of the Stargate</summary>
+**Returns:**<br/>
+- `maxEnergy` : *Long* - Amount of energy that can be stored i.e. capacity in FE
+</details>
+
+### getEnergyRequiredToDial(`address`)
+<details>
+<summary>Returns the amount of energy needed to dial an address</summary>
+**Parameters:**<br/>
+- `address` : *Table* - an address of a stargate - names or glyphIds, with or without the Point of Origin glyph
+
+**Returns:**<br/>
+- `success` : *Boolean* - True if no error occurred during processing, otherwise false
+- `response` : *String* - ["not_merged", "address_malformed", "energy_map"]
+- `energyMap` : *Table* - Optional when `response` is "energy_map": contain 3 entries: \{open, keepAlive, canOpen\}
+</details>
+
+## Dialing methods
+Function that operates the gate's dialing sequence.
+
+### dialAddress(`address`)
+<details>
+<summary>Dials a full address, including Point of Origin</summary>
+**Parameters:**<br/>
+- `address` : *Table* - an address to dial - names or glyphIds, with the Point of Origin glyph
+
+**Returns:**<br/>
+- `success` : *Boolean* - True if no error occurred during processing, otherwise false
+- `response` : *String* - ["stargate_failure_not_merged", "stargate_failure_busy", "stargate_failure_not_empty", "input_address_malformed", "dial_begun"]
+- `readableResponse` : *String* - Readable response
+
+**Throws:**<br/>
+- `bad argument (symbol name/index invalid)` : *IllegalArgumentException* - Thown when bad symbol is input inside the address
+</details>
+
+### engageTopSymbol()
+<details>
+<summary>Engage symbol under Top chevron</summary>
+<Aside type="danger" title="Not available for Pegasus gate type">
+This method cannot be used on Pegasus gates properly.
+</Aside>
+**Returns:**<br/>
+- `success` : *Boolean* - True if no error occurred during processing, otherwise false
+- `response` : *String* - ["stargate_not_merged", "stargate_busy", "chevron_engage_error", "chevron_engaged"]
+- `readableResponse` : *String* - Readable response
+</details>
+
+### abortDialing()
+<details>
+<summary>Aborts the active dialing sequence, resetting the gate to idle</summary>
+**Returns:**<br/>
+- `success` : *Boolean* - True if no error occurred during processing, otherwise false
+- `response` : *String* - ["stargate_failure_not_merged", "stargate_aborting_failed", "stargate_aborting"]
+- `readableResponse` : *String* - Readable response
+</details>
+
+### engageGate()
+<details>
+<summary>Attempts to make a connection to the receiving gate and open a wormhole</summary>
+**Returns:**<br/>
+- `success` : *Boolean* - True if no error occurred during processing, otherwise false
+- `response` : *String* - ["stargate_failure_not_merged", "stargate_failure_opening", "stargate_failure_busy", "stargate_engage"]
+- `readableResponse` : *String* - If `response` is not "stargate_engage": Readable response
+</details>
+
+### disengageGate()
+<details>
+<summary>Attempts to close the wormhole</summary>
+**Returns:**<br/>
+- `success` : *Boolean* - True if no error occurred during processing, otherwise false
+- `response` : *String* - ["stargate_failure_not_merged", "stargate_failure_wrong_end", "stargate_failure_not_open", "stargate_disengage"]
+- `readableResponse` : *String* - Readable response
+</details>
+
+### spinRing(?counterClockwise)
+<details>
+<summary>Spins the stargate's ring</summary>
+**Parameters:**<br/>
+- `counterClockwise` : *Boolean* - Optional; if true, spins the ring counter clockwise
+
+**Returns:**<br/>
+- `success` : *Boolean* - True if no error occurred during processing, otherwise false
+- `response` : *String* - ["stargate_not_merged", "stargate_busy", "stargate_ring_already_spinning", "stargate_locked", "stargate_ring_spin"]
+- `readableResponse` : *String* - Readable response
+</details>
+
+### stopRingSpin()
+<details>
+<summary>Stops the stargate's ring</summary>
+**Returns:**<br/>
+- `success` : *Boolean* - True if no error occurred during processing, otherwise false
+- `response` : *String* - ["stargate_not_merged", "stargate_busy", "stargate_ring_not_spinning", "stargate_ring_spin_stop"]
+- `readableResponse` : *String* - Readable response
+</details>
+
+### engageSymbol(symbol)
+<details>
+<summary>Spins the ring and engages the symbol</summary>
+**Parameters:**<br/>
+- `symbol` : *Int|String* - Symbol ID or english name (for point of origins "Point Of Origin" is also accepted)
+
+**Returns:**<br/>
+- `success` : *Boolean* - True if no error occurred during processing, otherwise false
+- `response` : *String* - ["stargate_failure_not_merged", "stargate_failure_busy", "stargate_failure_full", "stargate_spin"]
+- `readableResponse` : *String* - Readable response
+
+**Throws:**<br/>
+- `bad argument (symbol name/index invalid)` : *IllegalArgumentException* - Thown when bad symbol is input
+</details>
+
+## Iris methods
+Functions that operate iris.
+
+### toggleIris()
+<details>
+<summary>Toggles the stargate's iris/shield</summary>
+<Aside type="note" title="Stargate config in GUI required!">
+Stargate's iris mode needs to be set to OC/CC mode.
+</Aside>
+**Returns:**<br/>
+- `success` : *Boolean* - True if no error occurred during processing, otherwise false
+- `response` : *String* - ["stargate_iris_missing", "stargate_iris_error_mode", "stargate_iris_not_power", "stargate_iris_busy", "stargate_iris_toggled"]
+- `readableResponse` : *String* - Readable response
+</details>
+
+### getIrisState()
+<details>
+<summary>Returns current iris/shield state</summary>
+**Returns:**<br/>
+- `state` : *String* - ["OPENED", "CLOSED", "OPENING", "CLOSING", "ERROR"]
+</details>
+
+### getIrisType()
+<details>
+<summary>Returns attached iris/shield type</summary>
+**Returns:**<br/>
+- `type` : *String* - ["NULL", "IRIS_TITANIUM", "IRIS_TRINIUM", "SHIELD", "IRIS_CREATIVE"]
+</details>
+
+### getIrisDurability()
+<details>
+<summary>Returns durability of the iris</summary>
+**Returns:**<br/>
+- `formatted` : *String* - Format "\<durability\>/\<maxDurability\>"
+- `durability` : *Int* - Current durability
+- `maxDurability` : *Int* - Maximum durability
+</details>
+
+## IDC and messagess
+Sending data trough open stargate.
+
+### sendIrisCode(code)
+<details>
+<summary>Sends IDC code trough outgoing stargate</summary>
+**Parameters:**<br/>
+- `code` : *String* - IDC code (String, because it can start with 0)
+
+**Returns:**<br/>
+- `success` : *Boolean* - True if no error occurred during processing, otherwise false
+- `response` : *String* - ["stargate_not_engaged", "invalid_target_gate", "success"], 
+- `readableResponse` : *String* - Readable response
+</details>
+
+### sendMessage(message)
+<details>
+<summary>Sends message to connected gate trough open wormhole</summary>
+**Parameters:**<br/>
+- `message` : *String* - Message to send
+
+**Returns:**<br/>
+- `success` : *Boolean* - True if no error occurred during processing, otherwise false
+- `response` : *String* - ["stargate_failure_not_merged", "stargate_failure_not_engaged", "no_listener_available", "wrong_argument_type", "success"]
+- `readableResponse` : *String* - Readable response
+
+If `success` is true then:
+- `message` : *String* - Sent message
+</details>
+
+### sendMessageToIncomingTraveller(message)
+<details>
+<summary>Sends message to player/computer that sent IDC last. This method is intended to be used to reply to `stargate_iris_code_received` event.</summary>
+**Parameters:**<br/>
+- `message` : *String* - Message to send
+
+**Returns:**<br/>
+- `success` : *Boolean* - True if no error occurred during processing, otherwise false
+- `response` : *String* - ["stargate_failure_not_merged", "stargate_failure_not_engaged", "no_listener_available", "wrong_argument_type", "success"]
+- `readableResponse` : *String* - Readable response
+
+If `success` is true then:
+- `message` : *String* - Sent message
+</details>
+
+### sendMessageToIncoming() ⚠️
+<Aside type="danger" title="Method renamed">
+Since version: `6.0.0.0`<br/>
+New name: [`sendMessageToIncomingTraveller(message)`](/jsg/computercraft/stargate-api/#sendmessagetoincomingtravellermessage)
+</Aside>
+
+## Cinematic methods
+Functions that do only cinematic effects.
+
+### openChevron(index)
+<details>
+<summary>Opens chevron's moving part</summary>
+**Parameters:**<br/>
+- `index` : *Int* - Selection of chevron [0, 1, 2, 3, 4, 5, 6, 7, 8, 9] (while 9 is the top chevron)
+
+**Returns:**<br/>
+- `success` : *Boolean* - True if no error occurred during processing, otherwise false
+- `response` : *String* - ["stargate_not_merged", "stargate_busy", "chevron_already_open", "chevron_open"]
+- `readableResponse` : *String* - Readable response
+</details>
+
+### activateChevron(index)
+<details>
+<summary>Activates the chevron (lights it up in most cases)</summary>
+**Parameters:**<br/>
+- `index` : *Int* - Selection of chevron [0, 1, 2, 3, 4, 5, 6, 7, 8, 9] (while 9 is the top chevron)
+
+**Returns:**<br/>
+- `success` : *Boolean* - True if no error occurred during processing, otherwise false
+- `response` : *String* - ["stargate_not_merged", "stargate_busy", "chevron_already_activated", "chevron_activate"]
+- `readableResponse` : *String* - Readable response
+</details>
+
+### closeChevron(index)
+<details>
+<summary>Closes chevron's moving part</summary>
+**Parameters:**<br/>
+- `index` : *Int* - Selection of chevron [0, 1, 2, 3, 4, 5, 6, 7, 8, 9] (while 9 is the top chevron)
+
+**Returns:**<br/>
+- `success` : *Boolean* - True if no error occurred during processing, otherwise false
+- `response` : *String* - ["stargate_not_merged", "stargate_busy", "chevron_already_closed", "chevron_close"]
+- `readableResponse` : *String* - Readable response
+</details>
+
+### deactivateChevron(index)
+<details>
+<summary>Deactivates the chevron</summary>
+**Parameters:**<br/>
+- `index` : *Int* - Selection of chevron [0, 1, 2, 3, 4, 5, 6, 7, 8, 9] (while 9 is the top chevron)
+
+**Returns:**<br/>
+- `success` : *Boolean* - True if no error occurred during processing, otherwise false
+- `response` : *String* - ["stargate_not_merged", "stargate_busy", "chevron_already_deactivated", "chevron_deactivate"]
+- `readableResponse` : *String* - Readable response
 </details>
