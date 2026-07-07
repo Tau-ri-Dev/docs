@@ -16,6 +16,6 @@
 	"prefer_related_applications": false,
 	"start_url": "https://docs.tauridev.eu",
 	"display": "standalone",
-	"theme_color": "#ffffff",
+	"theme_color": "#12141C",
 	"background_color": "#12141C"
 }

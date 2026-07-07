@@ -4,6 +4,7 @@ import starlight from '@astrojs/starlight';
 import starlightSidebarTopics from "starlight-sidebar-topics";
 import rehypeExternalLinks from 'rehype-external-links';
 import starlightImageZoom from 'starlight-image-zoom'
+import remarkGfm from 'remark-gfm';
 
 
 const prod = process.env.NODE_ENV === "production";
@@ -11,6 +12,9 @@ const prod = process.env.NODE_ENV === "production";
 export default defineConfig({
     site: prod ? "https://docs.tauridev.eu" : undefined,
     markdown: {
+        remarkPlugins: [
+            [remarkGfm, {gfm: true}]
+        ],
         rehypePlugins: [[rehypeExternalLinks, { target: '_blank', rel: [] }]],
     },
     integrations: [
