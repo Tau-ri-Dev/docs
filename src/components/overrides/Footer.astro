@@ -1,0 +1,121 @@
+---
+import type { Props } from "@astrojs/starlight/props";
+import EditLink from "virtual:starlight/components/EditLink";
+import LastUpdated from "virtual:starlight/components/LastUpdated";
+import Pagination from "virtual:starlight/components/Pagination";
+---
+
+<footer class="sl-flex">
+	<div class="feedback-section">
+		<p id="feedback-prompt">Was this page helpful?</p>
+		<div class="feedback-buttons" id="feedback-buttons-container">
+			<button class="feedback-btn" data-helpful="yes">👍 Yes</button>
+			<button class="feedback-btn" data-helpful="no">👎 No</button>
+		</div>
+		<p id="feedback-thanks" style="display: none;">
+			Thank you for your feedback!
+		</p>
+	</div>
+	<hr class="footer-divider" />
+	<div class="meta sl-flex">
+		<EditLink {...Astro.props} />
+		<LastUpdated {...Astro.props} />
+	</div>
+	<Pagination {...Astro.props} />
+</footer>
+
+<script>
+	declare global {
+		interface Window {
+			gtag: (...args: any[]) => void;
+			dataLayer: any[];
+		}
+	}
+
+	window.gtag =
+		window.gtag ||
+		function () {
+			(window.dataLayer = window.dataLayer || []).push(arguments);
+		};
+
+	const buttons = document.querySelectorAll(".feedback-btn");
+	const buttonsContainer = document.getElementById(
+		"feedback-buttons-container",
+	);
+	const promptText = document.getElementById("feedback-prompt");
+	const thanksText = document.getElementById("feedback-thanks");
+
+	buttons.forEach((button) => {
+		button.addEventListener("click", (e) => {
+			const response = (
+				e.currentTarget as HTMLButtonElement
+			).getAttribute("data-helpful");
+			const pagePath = window.location.pathname;
+
+			// Send the custom event to Google Analytics 4
+			if (typeof window.gtag === "function") {
+				window.gtag("event", "page_feedback", {
+					page_path: pagePath,
+					was_helpful: response, // Will pass either "yes" or "no"
+				});
+			} else {
+				console.warn("Google Analytics (gtag) is not loaded yet.");
+			}
+
+			if (buttonsContainer && promptText && thanksText) {
+				buttonsContainer.style.display = "none";
+				promptText.style.display = "none";
+				thanksText.style.display = "block";
+			}
+		});
+	});
+
+	if (window.location.pathname == "/" || window.location.pathname == "") {
+		document.querySelectorAll(".feedback-section")[0].style.display = "none";
+	}
+</script>
+
+<style>
+	footer {
+		flex-direction: column;
+		gap: 1.5rem;
+		margin-top: 3rem;
+	}
+	.feedback-section {
+		padding: 1.5rem;
+		background: var(--sl-color-bg-nav);
+		border: 1px solid var(--sl-color-hairline);
+		border-radius: 0.5rem;
+		text-align: center;
+	}
+	.feedback-buttons {
+		display: flex;
+		gap: 1rem;
+		justify-content: center;
+		margin-top: 0.7rem;
+	}
+	.feedback-btn {
+		background: var(--sl-color-bg);
+		border: 1px solid var(--sl-color-gray-5);
+		color: var(--sl-color-text-accent);
+		padding: 0.5rem 1rem;
+		border-radius: 0.25rem;
+		cursor: pointer;
+		transition: all 0.2s ease;
+	}
+	.feedback-btn:hover {
+		background: var(--sl-color-gray-6);
+		border-color: var(--sl-color-text-accent);
+	}
+	.footer-divider {
+		border: 0;
+		border-bottom: 1px solid var(--sl-color-hairline);
+	}
+	.meta {
+		gap: 0.75rem 3rem;
+		justify-content: space-between;
+		flex-wrap: wrap;
+		font-size: var(--sl-text-sm);
+		color: var(--sl-color-gray-3);
+	}
+</style>

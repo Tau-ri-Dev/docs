@@ -13,7 +13,7 @@ export default defineConfig({
     site: prod ? "https://docs.tauridev.eu" : undefined,
     markdown: {
         remarkPlugins: [
-            [remarkGfm, {gfm: true}]
+            [remarkGfm, { gfm: true }]
         ],
         rehypePlugins: [[rehypeExternalLinks, { target: '_blank', rel: [] }]],
     },
@@ -23,7 +23,7 @@ export default defineConfig({
             title: 'Tau\'ri Dev Docs',
             description: 'Home of documentations for all Tau\'ri Dev projects. Check out how to build stargates with JSG mod, use Transport Rings with JSG: Rings and Additions or play cool music with Redstone Jukeboxes Mod!',
             head: [
-                { tag: "meta", attrs: { charset: "URF-8"} },
+                { tag: "meta", attrs: { charset: "URF-8" } },
                 { tag: "link", attrs: { rel: "manifest", href: "/manifest.json" } },
 
                 // meta tags
@@ -42,6 +42,23 @@ export default defineConfig({
                 { tag: "meta", attrs: { property: "twitter:card", content: "summary_large_image" } },
                 { tag: "meta", attrs: { property: "twitter:url", content: "https://docs.tauridev.eu" } },
                 { tag: "meta", attrs: { property: "twitter:image", content: "https://docs.tauridev.eu/assets/favicon.png" } },
+
+                // scripts
+                {
+                    tag: 'script',
+                    attrs: {
+                        async: true,
+                        src: 'https://www.googletagmanager.com/gtag/js?id=G-11VK33EGCR',
+                    },
+                }, {
+                    tag: 'script',
+                    content: `
+                        window.dataLayer = window.dataLayer || [];
+                        function gtag(){dataLayer.push(arguments);}
+                        gtag('js', new Date());
+                        gtag('config', 'G-11VK33EGCR'); 
+                    `,
+                },
             ],
             editLink: {
                 baseUrl: 'https://github.com/Tau-ri-Dev/docs/edit/main/',
@@ -72,7 +89,8 @@ export default defineConfig({
             components: {
                 PageFrame: "./src/components/overrides/PageFrame.astro",
                 Sidebar: "./src/components/overrides/Sidebar.astro",
-                //Sidebar: "@astrojs/starlight/components/Sidebar.astro",
+                Footer: './src/components/overrides/Footer.astro'
+                //Sidebar: "@astrojs/starlight/components/Sidebar.astro"
             },
             plugins: [
                 starlightImageZoom(),
