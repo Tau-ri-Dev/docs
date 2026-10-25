@@ -247,7 +247,21 @@ export default defineConfig({
                             label: 'JSG: Destiny',
                             link: '/jsg-destiny/',
                             icon: "rocket",
-                            items: [],
+                            items: [
+                                "jsg-destiny",
+                                {
+                                    label: 'Getting started',
+                                    items: [{ autogenerate: { directory: 'jsg-destiny/getting-started' } }],
+                                },
+                                {
+                                    label: 'Blocks',
+                                    items: [{ autogenerate: { directory: 'jsg-destiny/blocks' } }],
+                                },
+                                {
+                                    label: 'Items',
+                                    items: [{ autogenerate: { directory: 'jsg-destiny/items' } }],
+                                },
+                            ],
                         },
                         {
                             id: 'jsg-decor',
