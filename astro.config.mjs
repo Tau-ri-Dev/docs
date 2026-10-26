@@ -257,10 +257,6 @@ export default defineConfig({
                                     label: 'Blocks',
                                     items: [{ autogenerate: { directory: 'jsg-destiny/blocks' } }],
                                 },
-                                {
-                                    label: 'Items',
-                                    items: [{ autogenerate: { directory: 'jsg-destiny/items' } }],
-                                },
                             ],
                         },
                         {
