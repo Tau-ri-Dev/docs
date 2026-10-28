@@ -264,7 +264,7 @@ export default defineConfig({
                             label: 'JSG: Decor',
                             link: '/jsg-decor/',
                             icon: "puzzle",
-                            items: [],
+                            items: ["jsg-decor"],
                         },
                         {
                             id: 'rsj',
