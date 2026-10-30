@@ -34,6 +34,12 @@ html {
 	width: 100%;
 }
 
+.sl-markdown-content img[src*="/assets/jsg/mobs/"]:not([src*="mastadge.webp"]) {
+    width: 192px;
+    height: 192px;
+    object-fit: contain;
+}
+
 .sl-markdown-content :is(img.img-inline, .img-inline img) {
 	margin: 0;
 	width: auto;
