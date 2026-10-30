@@ -47,6 +47,10 @@ html {
 	width: auto;
 }
 
+.sl-markdown-content table th {
+    text-align: center;
+}
+
 .sl-badge {
 	font-family: var(--__sl-font-mono);
 }
