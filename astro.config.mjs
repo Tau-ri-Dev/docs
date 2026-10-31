@@ -240,7 +240,7 @@ export default defineConfig({
                             label: 'JSG: Rings and Transporters',
                             link: '/jsg-rings/',
                             icon: "bars",
-                            items: [],
+                            items: ["jsg-rings"],
                         },
                         {
                             id: 'jsg-destiny',
