@@ -240,7 +240,7 @@ export default defineConfig({
                             label: 'JSG: Rings and Transporters',
                             link: '/jsg-rings/',
                             icon: "bars",
-                            items: [],
+                            items: ["jsg-rings"],
                         },
                         {
                             id: 'jsg-destiny',
@@ -257,10 +257,6 @@ export default defineConfig({
                                     label: 'Blocks',
                                     items: [{ autogenerate: { directory: 'jsg-destiny/blocks' } }],
                                 },
-                                {
-                                    label: 'Items',
-                                    items: [{ autogenerate: { directory: 'jsg-destiny/items' } }],
-                                },
                             ],
                         },
                         {
@@ -268,7 +264,7 @@ export default defineConfig({
                             label: 'JSG: Decor',
                             link: '/jsg-decor/',
                             icon: "puzzle",
-                            items: [],
+                            items: ["jsg-decor"],
                         },
                         {
                             id: 'rsj',
