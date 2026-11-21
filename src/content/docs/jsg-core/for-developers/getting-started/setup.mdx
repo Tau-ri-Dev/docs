@@ -59,14 +59,15 @@ However, the steps below should apply to other IDEs as well, with some minor cha
 			}
 
 			repositories {
-				// Add the maven central, if already not done
-				mavenCentral()
+				// Add the JitPack repo, if already not done
+				maven {
+					name = 'JitPack'
+					url = 'https://jitpack.io'
+				}
 			}
 
 			dependencies {
-				// DO NOT FORGET transitive = false !!!!
-				// DO NOT FORGET TO PUT ":" AT THE END - to make gradle download the FULL shadowed jar file
-				implementation(fg.deobf("eu.tauridev:jsg-core-${minecraft_version}:${core_version}:") { transitive = false }) // <---- Add this line!!!
+				implementation(fg.deobf("com.github.Tau-ri-Dev:Mod-JSGCore-public:${minecraft_version}-${core_version}")) // <---- Add this line!!!
 			}
 
 			// UPDATE processResources TASK AS SHOWN: !IMPORTANT!
@@ -159,14 +160,17 @@ However, the steps below should apply to other IDEs as well, with some minor cha
 			}
 
 			repositories {
-				// Add the maven central, if already not done
-				mavenCentral()
+				// Add the JitPack repo, if already not done
+				maven {
+					name = 'JitPack'
+					url = 'https://jitpack.io'
+				}
 			}
 
 			dependencies {
 				// DO NOT FORGET transitive = false !!!!
 				// DO NOT FORGET TO PUT ":" AT THE END - to make gradle download the FULL shadowed jar file
-				implementation("eu.tauridev:jsg-core-${minecraft_version}:${core_version}:") { transitive = false } // <---- Add this line!!!
+				implementation("com.github.Tau-ri-Dev:Mod-JSGCore-public:${minecraft_version}-${core_version}") // <---- Add this line!!!
 			}
 
 			// UPDATE replaceProperties AS SHOWN: !IMPORTANT!
